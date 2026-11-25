@@ -1,0 +1,2474 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bolajon — Logopediya va Aqlli O'yinlar</title>
+    <meta
+      name="description"
+      content="3 yoshli bolalar uchun o'zbek tilida ovozli logopedik mashqlar, ta'limiy bo'limlar va 11 ta rivojlantiruvchi mini-o'yin."
+    />
+    <meta property="og:title" content="Bolajon — Logopediya va Aqlli O'yinlar" />
+    <meta
+      property="og:description"
+      content="3 yoshli bolalar uchun o'zbek tilida ovozli logopedik mashqlar, ta'limiy bo'limlar va 11 ta rivojlantiruvchi mini-o'yin."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="/src/main.tsx"></script>
+    <style>
+      :root {
+        --bg-canvas: #f8fafc;
+        --ink-main: #1e293b;
+      }
+
+      body {
+        font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+        background-color: var(--bg-canvas);
+        color: var(--ink-main);
+        transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow-x: hidden;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      h1, h2, h3, .font-display {
+        font-family: 'Fredoka', 'Nunito', system-ui, sans-serif;
+      }
+
+      /* Cartoon 3D Tactile Buttons */
+      .kid-card {
+        border: 3px solid #1e293b;
+        box-shadow: 0 7px 0 #1e293b;
+        transition: transform 0.14s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.14s cubic-bezier(0.16, 1, 0.3, 1),
+                    background-color 0.2s ease;
+      }
+
+      .kid-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 9px 0 #1e293b;
+      }
+
+      .kid-card:active {
+        transform: translateY(5px);
+        box-shadow: 0 2px 0 #1e293b;
+      }
+
+      .kid-btn {
+        border: 3px solid #1e293b;
+        box-shadow: 0 5px 0 #1e293b;
+        transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .kid-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 0 #1e293b;
+      }
+
+      .kid-btn:active {
+        transform: translateY(4px);
+        box-shadow: 0 1px 0 #1e293b;
+      }
+
+      .kid-panel {
+        border: 3px solid #1e293b;
+        box-shadow: 0 8px 0 rgba(30, 41, 59, 0.15);
+      }
+
+      /* Playful Cartoon Keyframes */
+      @keyframes bounceSoft {
+        0%, 100% { transform: translateY(0) scale(1); }
+        40% { transform: translateY(-12px) scale(1.06); }
+        70% { transform: translateY(3px) scale(0.97); }
+      }
+
+      @keyframes wigglePlay {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        25% { transform: rotate(-8deg) scale(1.08); }
+        75% { transform: rotate(8deg) scale(1.08); }
+      }
+
+      @keyframes sparklePulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.22); opacity: 1; }
+      }
+
+      @keyframes tongueSwing {
+        0%, 100% { transform: rotate(-22deg); }
+        50% { transform: rotate(22deg); }
+      }
+
+      @keyframes boatRock {
+        0%, 100% { transform: translateY(0px) rotate(-5deg); }
+        50% { transform: translateY(-6px) rotate(5deg); }
+      }
+
+      @keyframes tongueLick {
+        0%, 100% { transform: translateY(0) scaleY(1); }
+        50% { transform: translateY(-10px) scaleY(1.15); }
+      }
+
+      @keyframes teethShine {
+        0%, 100% { opacity: 0.3; transform: scale(0.75) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1.2) rotate(25deg); }
+      }
+
+      @keyframes clapLeft {
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        50% { transform: translateX(18px) rotate(12deg) scale(1.08); }
+      }
+
+      @keyframes clapRight {
+        0%, 100% { transform: translateX(0) rotate(0deg); }
+        50% { transform: translateX(-18px) rotate(-12deg) scale(1.08); }
+      }
+
+      @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-90px) scale(1.3); opacity: 0; }
+      }
+
+      @keyframes roadStripeMove {
+        0% { transform: translateY(-60px); }
+        100% { transform: translateY(60px); }
+      }
+
+      @keyframes confettiDrop {
+        0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(340px) rotate(540deg); opacity: 0; }
+      }
+
+      .anim-bounce { animation: bounceSoft 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+      .anim-wiggle { animation: wigglePlay 0.5s ease-in-out; }
+      .anim-sparkle { animation: sparklePulse 1.4s ease-in-out infinite; }
+      .anim-tongue-swing { transform-origin: 100px 104px; animation: tongueSwing 0.9s ease-in-out infinite; }
+      .anim-boat-rock { transform-origin: center; animation: boatRock 1.3s ease-in-out infinite; }
+      .anim-tongue-lick { transform-origin: 100px 115px; animation: tongueLick 0.8s ease-in-out infinite; }
+      .anim-teeth-shine { transform-origin: center; animation: teethShine 1.1s ease-in-out infinite; }
+      .anim-clap-left { animation: clapLeft 0.25s ease-out; }
+      .anim-clap-right { animation: clapRight 0.25s ease-out; }
+      .anim-float-up { animation: floatUp 0.9s ease-out forwards; }
+
+      .shadow-silhouette {
+        filter: brightness(0) contrast(1.2);
+      }
+
+      .road-stripe-anim {
+        animation: roadStripeMove 0.45s linear infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b-[3px] border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+        <!-- Brand Mark -->
+        <button
+          id="brand-home-btn"
+          type="button"
+          class="flex items-center gap-3 text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-amber-300 rounded-2xl pr-2 cursor-pointer"
+        >
+          <span
+            id="brand-logo-icon"
+            class="w-11 h-11 rounded-2xl bg-amber-300 border-[3px] border-slate-800 flex items-center justify-center shrink-0"
+          ></span>
+          <span class="font-display text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0">
+            Bolajon
+          </span>
+        </button>
+
+        <!-- Primary Navigation Tabs -->
+        <nav aria-label="Asosiy bo'limlar" class="flex items-center gap-2 overflow-x-auto py-1">
+          <button
+            type="button"
+            data-nav="logopediya"
+            class="nav-tab kid-btn px-4 py-2.5 rounded-2xl font-display text-base sm:text-lg font-bold whitespace-nowrap shrink-0 bg-amber-300 text-slate-900 cursor-pointer"
+          >
+            🗣 Logopediya
+          </button>
+          <button
+            type="button"
+            data-nav="galereya"
+            class="nav-tab kid-btn px-4 py-2.5 rounded-2xl font-display text-base sm:text-lg font-bold whitespace-nowrap shrink-0 bg-white text-slate-800 cursor-pointer"
+          >
+            🦁 Hayvon va Meva
+          </button>
+          <button
+            type="button"
+            data-nav="ranglar"
+            class="nav-tab kid-btn px-4 py-2.5 rounded-2xl font-display text-base sm:text-lg font-bold whitespace-nowrap shrink-0 bg-white text-slate-800 cursor-pointer"
+          >
+            🎨 Rang va Shakl
+          </button>
+          <button
+            type="button"
+            data-nav="oyinlar"
+            class="nav-tab kid-btn px-4 py-2.5 rounded-2xl font-display text-base sm:text-lg font-bold whitespace-nowrap shrink-0 bg-white text-slate-800 cursor-pointer"
+          >
+            🎮 11 ta O'yin
+          </button>
+        </nav>
+
+        <!-- Voice Toggle & Star Counter -->
+        <div class="flex items-center gap-3 shrink-0">
+          <div
+            class="flex items-center gap-1.5 bg-amber-100 border-[3px] border-slate-800 rounded-2xl px-3.5 py-2 font-display text-lg font-bold text-slate-900 tabular-nums"
+            title="To'plangan yulduzchalar"
+          >
+            <span>⭐</span>
+            <span id="star-total">0</span>
+          </div>
+          <button
+            id="voice-toggle-btn"
+            type="button"
+            class="kid-btn px-3.5 py-2 rounded-2xl bg-sky-200 text-slate-900 font-bold text-sm sm:text-base whitespace-nowrap shrink-0 cursor-pointer"
+            aria-pressed="true"
+          >
+            🔊 Ovoz: Yoqilgan
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Active Speech Subtitle Banner -->
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 pt-4">
+      <div
+        id="speech-banner"
+        class="bg-white border-[3px] border-slate-800 rounded-3xl px-5 py-3 flex items-center justify-between gap-4 shadow-[0_4px_0_#1e293b]"
+      >
+        <div class="flex items-center gap-3 min-w-0">
+          <span
+            id="speaker-avatar"
+            class="w-10 h-10 rounded-full bg-emerald-200 border-2 border-slate-800 flex items-center justify-center text-xl shrink-0"
+          >
+            🦜
+          </span>
+          <p id="speech-text" class="text-base sm:text-xl font-extrabold text-slate-800 truncate sm:whitespace-normal">
+            Salom, bolajon! Keling, birga o'ynaymiz va gaplashamiz!
+          </p>
+        </div>
+        <button
+          id="repeat-speech-btn"
+          type="button"
+          class="kid-btn bg-emerald-300 text-slate-900 font-bold px-4 py-2 rounded-2xl text-sm sm:text-base whitespace-nowrap shrink-0 cursor-pointer"
+        >
+          🔊 Eshitish
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Dynamic Workspace -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <!-- SECTION 1: LOGOPEDIYA -->
+      <section id="section-logopediya" class="app-section space-y-10">
+        <!-- Til va Lab Gimnastikasi -->
+        <div>
+          <div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+            <div>
+              <h1 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">
+                🗣 Til va Lab Gimnastikasi
+              </h1>
+              <p class="text-slate-600 font-bold text-base sm:text-lg mt-1">
+                Rasmchaga bosing va ko'rsatilgandek til bilan mashq qiling!
+              </p>
+            </div>
+          </div>
+          <div id="exercises-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+
+        <!-- Unli va Asosiy Tovushlar -->
+        <div class="bg-white border-[3px] border-slate-800 rounded-[2rem] p-5 sm:p-8 shadow-[0_8px_0_#1e293b]">
+          <div class="mb-6">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900">
+              🔤 Tovushlarni Talaffuz Qilamiz
+            </h2>
+            <p class="text-slate-600 font-bold text-base sm:text-lg mt-1">
+              Harflarni bosing va baland ovozda birga qaytaring!
+            </p>
+          </div>
+          <div id="letters-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4"></div>
+          <div
+            id="letter-mouth-tip"
+            class="mt-6 bg-amber-50 border-2 border-slate-800 rounded-2xl p-4 flex items-center gap-4"
+          >
+            <span class="text-3xl shrink-0">👄</span>
+            <p id="letter-mouth-text" class="text-lg font-extrabold text-slate-800">
+              Biror harfni bosing — men uni qanday aytishni o'rgataman!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: HAYVONLAR VA MEVALAR -->
+      <section id="section-galereya" class="app-section hidden space-y-10">
+        <!-- 6 ta Hayvon -->
+        <div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+            🦁 Quvnoq Hayvonlar
+          </h2>
+          <p class="text-slate-600 font-bold text-base sm:text-lg mb-5">
+            Hayvonchalarni bosing — ularning ovozini va ismini bilib oling!
+          </p>
+          <div id="animals-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+
+        <!-- 6 ta Meva va Sabzavot -->
+        <div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+            🍎 Shirin Mevalar va Sabzavotlar
+          </h2>
+          <p class="text-slate-600 font-bold text-base sm:text-lg mb-5">
+            Foydali mevalarni bosing va rangini ayting!
+          </p>
+          <div id="fruits-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: RANGLAR VA SHAKLLAR -->
+      <section id="section-ranglar" class="app-section hidden space-y-10">
+        <!-- 4 ta Asosiy Rang -->
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-5">
+            <div>
+              <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">
+                🎨 Sehrli Ranglar
+              </h2>
+              <p class="text-slate-600 font-bold text-base sm:text-lg mt-1">
+                Rangni bossangiz, butun ekran o'sha rangga bo'yaladi!
+              </p>
+            </div>
+            <button
+              id="reset-bg-btn"
+              type="button"
+              class="kid-btn bg-white text-slate-900 font-bold px-5 py-2.5 rounded-2xl cursor-pointer"
+            >
+              🔄 Oq fonga qaytish
+            </button>
+          </div>
+          <div id="colors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+
+        <!-- 3 ta Asosiy Shakl -->
+        <div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
+            🔷 Asosiy Shakllar
+          </h2>
+          <p class="text-slate-600 font-bold text-base sm:text-lg mb-5">
+            Shakllarni bosing — ular sakrab o'z sirini aytib beradi!
+          </p>
+          <div id="shapes-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-6"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: 11 TA RIVOJLANTIRUVCHI O'YINLAR -->
+      <section id="section-oyinlar" class="app-section hidden">
+        <!-- Games Menu View -->
+        <div id="games-menu-view">
+          <div class="mb-6">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900">
+              🎮 11 ta Aqlli va Quvnoq O'yinlar
+            </h2>
+            <p class="text-slate-600 font-bold text-base sm:text-lg mt-1">
+              O'zingizga yoqqan o'yinni tanlang va yulduzchalar to'plang!
+            </p>
+          </div>
+          <div id="games-hub-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+        </div>
+
+        <!-- Active Game Arena View -->
+        <div id="game-arena-view" class="hidden">
+          <div class="bg-white border-[3px] border-slate-800 rounded-[2rem] p-4 sm:p-6 shadow-[0_8px_0_#1e293b] relative overflow-hidden">
+            <!-- Game Arena Top Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-[3px] border-slate-200">
+              <button
+                id="back-to-games-btn"
+                type="button"
+                class="kid-btn bg-rose-200 text-slate-900 font-bold px-4 py-2.5 rounded-2xl text-base cursor-pointer whitespace-nowrap"
+              >
+                ⬅️ O'yinlarga qaytish
+              </button>
+              <h3 id="active-game-title" class="font-display text-2xl sm:text-3xl font-bold text-slate-900 text-center">
+                O'yin
+              </h3>
+              <div class="flex items-center gap-2">
+                <button
+                  id="game-prompt-audio-btn"
+                  type="button"
+                  class="kid-btn bg-sky-200 text-slate-900 font-bold px-4 py-2.5 rounded-2xl text-base cursor-pointer whitespace-nowrap"
+                >
+                  🔊 Vazifa
+                </button>
+                <div
+                  id="game-score-pill"
+                  class="bg-amber-200 border-[3px] border-slate-800 rounded-2xl px-4 py-2 font-display text-lg font-bold text-slate-900 tabular-nums"
+                >
+                  ⭐ 0
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Game Stage -->
+            <div id="game-stage" class="min-h-[420px] flex flex-col items-center justify-center relative"></div>
+
+            <!-- Confetti Overlay Container -->
+            <div id="confetti-layer" class="pointer-events-none absolute inset-0 overflow-hidden z-30"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Parent/Tip Footer -->
+    <footer class="max-w-7xl w-full mx-auto px-4 sm:px-6 pb-6 pt-2 text-center text-sm font-bold text-slate-500">
+      Bolajon — 3 yoshli bolalar nutqi, mantiqi va motorikasini rivojlantirish uchun o'zbekcha interaktiv maydoncha.
+    </footer>
+
+    <script>
+      (function () {
+        'use strict';
+
+        /* =========================================================
+           1. GLOBAL STATE & AUDIO / TTS ENGINE (uz-UZ + fallback)
+           ========================================================= */
+        const state = {
+          activeSection: 'logopediya',
+          voiceEnabled: true,
+          stars: 0,
+          lastSpoken: "Salom, bolajon! Keling, birga o'ynaymiz va gaplashamiz!",
+          activeGameId: null,
+          cleanupGame: null,
+          uzVoice: null,
+          fallbackVoice: null,
+          usingTurkishFallback: false,
+          audioCtx: null,
+          raceRaf: null,
+          ttsCache: new Map(),
+          activeAudio: null,
+          ttsAbort: null,
+          speechSeq: 0
+        };
+
+        const els = {
+          brandLogoIcon: document.getElementById('brand-logo-icon'),
+          brandHomeBtn: document.getElementById('brand-home-btn'),
+          navTabs: Array.from(document.querySelectorAll('.nav-tab')),
+          sections: {
+            logopediya: document.getElementById('section-logopediya'),
+            galereya: document.getElementById('section-galereya'),
+            ranglar: document.getElementById('section-ranglar'),
+            oyinlar: document.getElementById('section-oyinlar')
+          },
+          starTotal: document.getElementById('star-total'),
+          voiceToggleBtn: document.getElementById('voice-toggle-btn'),
+          speechText: document.getElementById('speech-text'),
+          speakerAvatar: document.getElementById('speaker-avatar'),
+          repeatSpeechBtn: document.getElementById('repeat-speech-btn'),
+          exercisesGrid: document.getElementById('exercises-grid'),
+          lettersGrid: document.getElementById('letters-grid'),
+          letterMouthText: document.getElementById('letter-mouth-text'),
+          animalsGrid: document.getElementById('animals-grid'),
+          fruitsGrid: document.getElementById('fruits-grid'),
+          colorsGrid: document.getElementById('colors-grid'),
+          shapesGrid: document.getElementById('shapes-grid'),
+          resetBgBtn: document.getElementById('reset-bg-btn'),
+          gamesHubGrid: document.getElementById('games-hub-grid'),
+          gamesMenuView: document.getElementById('games-menu-view'),
+          gameArenaView: document.getElementById('game-arena-view'),
+          backToGamesBtn: document.getElementById('back-to-games-btn'),
+          activeGameTitle: document.getElementById('active-game-title'),
+          gamePromptAudioBtn: document.getElementById('game-prompt-audio-btn'),
+          gameScorePill: document.getElementById('game-score-pill'),
+          gameStage: document.getElementById('game-stage'),
+          confettiLayer: document.getElementById('confetti-layer')
+        };
+
+        // Load voices carefully for uz-UZ with smart fallback
+        function resolveVoices() {
+          if (!('speechSynthesis' in window)) return;
+          const voices = window.speechSynthesis.getVoices() || [];
+          if (!voices.length) return;
+
+          state.uzVoice = voices.find((v) => v.lang.toLowerCase().startsWith('uz')) || null;
+          if (!state.uzVoice) {
+            const trVoice = voices.find((v) => v.lang.toLowerCase().startsWith('tr'));
+            if (trVoice) {
+              state.fallbackVoice = trVoice;
+              state.usingTurkishFallback = true;
+            } else {
+              state.fallbackVoice =
+                voices.find((v) => v.lang.toLowerCase().startsWith('ru')) ||
+                voices.find((v) => v.lang.toLowerCase().startsWith('en')) ||
+                voices[0];
+              state.usingTurkishFallback = false;
+            }
+          } else {
+            state.usingTurkishFallback = false;
+          }
+        }
+
+        if ('speechSynthesis' in window) {
+          resolveVoices();
+          if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+            window.speechSynthesis.onvoiceschanged = resolveVoices;
+          }
+        }
+
+        // Adapt Uzbek Latin slightly ONLY when falling back to Turkish TTS so "o'", "g'", "sh", "ch" sound natural
+        function adaptForTurkishFallback(text) {
+          return text
+            .replace(/O['’`]/g, 'Ö')
+            .replace(/o['’`]/g, 'ö')
+            .replace(/G['’`]/g, 'Ğ')
+            .replace(/g['’`]/g, 'ğ')
+            .replace(/Sh/g, 'Ş')
+            .replace(/sh/g, 'ş')
+            .replace(/Ch/g, 'Ç')
+            .replace(/ch/g, 'ç')
+            .replace(/X/g, 'H')
+            .replace(/x/g, 'h');
+        }
+
+        function stopAllSpeech() {
+          state.speechSeq += 1;
+          if (state.ttsAbort) {
+            state.ttsAbort.abort();
+            state.ttsAbort = null;
+          }
+          if (state.activeAudio) {
+            try {
+              state.activeAudio.pause();
+              state.activeAudio.currentTime = 0;
+            } catch (e) {}
+            state.activeAudio = null;
+          }
+          if ('speechSynthesis' in window) {
+            try {
+              window.speechSynthesis.cancel();
+            } catch (e) {}
+          }
+        }
+
+        function fallbackBrowserSpeak(text, opts = {}) {
+          if (!state.voiceEnabled || !('speechSynthesis' in window)) return;
+          try {
+            window.speechSynthesis.cancel();
+            resolveVoices();
+
+            const utter = new SpeechSynthesisUtterance(
+              !state.uzVoice && state.usingTurkishFallback ? adaptForTurkishFallback(text) : text
+            );
+
+            utter.rate = opts.rate ?? 1.08;
+            utter.pitch = opts.pitch ?? 1.15;
+            utter.volume = 1;
+
+            if (state.uzVoice) {
+              utter.lang = 'uz-UZ';
+              utter.voice = state.uzVoice;
+            } else if (state.fallbackVoice) {
+              utter.lang = state.fallbackVoice.lang;
+              utter.voice = state.fallbackVoice;
+            } else {
+              utter.lang = 'uz-UZ';
+            }
+
+            window.speechSynthesis.speak(utter);
+          } catch (e) {
+            // Safe fallback if browser blocks synthesis before gesture
+          }
+        }
+
+        function base64ToWavUrl(base64) {
+          const binary = atob(base64);
+          const bytes = new Uint8Array(binary.length);
+          for (let i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+          }
+          const blob = new Blob([bytes], { type: 'audio/wav' });
+          return URL.createObjectURL(blob);
+        }
+
+        function playAudioUrl(url, seq, opts = {}) {
+          if (!state.voiceEnabled || seq !== state.speechSeq) return;
+          const audio = new Audio(url);
+          audio.playbackRate = opts.playbackRate ?? 1.05;
+          state.activeAudio = audio;
+          audio.play().catch(() => {
+            if (seq === state.speechSeq) {
+              fallbackBrowserSpeak(state.lastSpoken, opts);
+            }
+          });
+        }
+
+        async function speakUzbek(text, opts = {}) {
+          state.lastSpoken = text;
+          els.speechText.textContent = text;
+          els.speakerAvatar.classList.remove('anim-bounce');
+          void els.speakerAvatar.offsetWidth;
+          els.speakerAvatar.classList.add('anim-bounce');
+
+          if (!state.voiceEnabled) return;
+
+          stopAllSpeech();
+          const seq = state.speechSeq;
+
+          const cachedUrl = state.ttsCache.get(text);
+          if (cachedUrl) {
+            playAudioUrl(cachedUrl, seq, opts);
+            return;
+          }
+
+          const controller = new AbortController();
+          state.ttsAbort = controller;
+
+          try {
+            const res = await fetch('/api/tts', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ text }),
+              signal: controller.signal
+            });
+            if (!res.ok) throw new Error('TTS API failed');
+            const data = await res.json();
+            if (!data.audioBase64) throw new Error('No audio payload');
+
+            const url = base64ToWavUrl(data.audioBase64);
+            state.ttsCache.set(text, url);
+            playAudioUrl(url, seq, opts);
+          } catch (err) {
+            if (err && err.name === 'AbortError') return;
+            if (seq === state.speechSeq) {
+              fallbackBrowserSpeak(text, opts);
+            }
+          }
+        }
+
+        // Web Audio API Synthesized Sound Effects
+        function getAudioCtx() {
+          if (!state.audioCtx) {
+            const Ctx = window.AudioContext || window.webkitAudioContext;
+            if (Ctx) state.audioCtx = new Ctx();
+          }
+          if (state.audioCtx && state.audioCtx.state === 'suspended') {
+            state.audioCtx.resume().catch(() => {});
+          }
+          return state.audioCtx;
+        }
+
+        const SFX = {
+          pop() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(340, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(680, ctx.currentTime + 0.09);
+            gain.gain.setValueAtTime(0.18, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.11);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.12);
+          },
+          success() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              const t = ctx.currentTime + idx * 0.08;
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, t);
+              gain.gain.setValueAtTime(0.18, t);
+              gain.gain.exponentialRampToValueAtTime(0.001, t + 0.24);
+              osc.connect(gain).connect(ctx.destination);
+              osc.start(t);
+              osc.stop(t + 0.25);
+            });
+          },
+          gentleOops() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(300, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(210, ctx.currentTime + 0.18);
+            gain.gain.setValueAtTime(0.14, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.22);
+          },
+          balloonPop() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            const bufferSize = ctx.sampleRate * 0.08;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+              data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.28));
+            }
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 950;
+            const gain = ctx.createGain();
+            gain.gain.value = 0.45;
+            noise.connect(filter).connect(gain).connect(ctx.destination);
+            noise.start();
+          },
+          clap() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            const bufferSize = ctx.sampleRate * 0.12;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+              data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.22));
+            }
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 1400;
+            const gain = ctx.createGain();
+            gain.gain.value = 0.5;
+            noise.connect(filter).connect(gain).connect(ctx.destination);
+            noise.start();
+          },
+          horn() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            [0, 0.17].forEach((offset) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              const t = ctx.currentTime + offset;
+              osc.type = 'sawtooth';
+              osc.frequency.setValueAtTime(420, t);
+              const filter = ctx.createBiquadFilter();
+              filter.type = 'lowpass';
+              filter.frequency.value = 1100;
+              gain.gain.setValueAtTime(0.16, t);
+              gain.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+              osc.connect(filter).connect(gain).connect(ctx.destination);
+              osc.start(t);
+              osc.stop(t + 0.14);
+            });
+          },
+          star() {
+            if (!state.voiceEnabled) return;
+            const ctx = getAudioCtx();
+            if (!ctx) return;
+            [660, 880].forEach((freq, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              const t = ctx.currentTime + i * 0.06;
+              osc.type = 'sine';
+              osc.frequency.setValueAtTime(freq, t);
+              gain.gain.setValueAtTime(0.18, t);
+              gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+              osc.connect(gain).connect(ctx.destination);
+              osc.start(t);
+              osc.stop(t + 0.19);
+            });
+          }
+        };
+
+        function addStar(amount = 1) {
+          state.stars += amount;
+          els.starTotal.textContent = String(state.stars);
+          els.starTotal.parentElement.classList.remove('anim-bounce');
+          void els.starTotal.parentElement.offsetWidth;
+          els.starTotal.parentElement.classList.add('anim-bounce');
+        }
+
+        function spawnConfetti() {
+          const colors = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#EC4899', '#8B5CF6'];
+          for (let i = 0; i < 24; i++) {
+            const dot = document.createElement('div');
+            const size = 10 + Math.random() * 10;
+            dot.style.position = 'absolute';
+            dot.style.left = Math.random() * 96 + '%';
+            dot.style.top = '-15px';
+            dot.style.width = size + 'px';
+            dot.style.height = size + 'px';
+            dot.style.borderRadius = Math.random() > 0.5 ? '9999px' : '4px';
+            dot.style.backgroundColor = colors[i % colors.length];
+            dot.style.border = '2px solid #1E293B';
+            dot.style.animation = `confettiDrop ${0.9 + Math.random() * 0.8}s ease-out forwards`;
+            dot.style.animationDelay = Math.random() * 0.25 + 's';
+            els.confettiLayer.appendChild(dot);
+            setTimeout(() => dot.remove(), 1900);
+          }
+        }
+
+        /* =========================================================
+           2. DYNAMIC SVG CARTOON ILLUSTRATIONS (100% CSS + JS)
+           ========================================================= */
+        function svgSunLogo() {
+          return `<svg viewBox="0 0 64 64" class="w-8 h-8" aria-hidden="true">
+            <circle cx="32" cy="32" r="18" fill="#FDE047" stroke="#1E293B" stroke-width="4"/>
+            <circle cx="26" cy="29" r="2.6" fill="#1E293B"/>
+            <circle cx="38" cy="29" r="2.6" fill="#1E293B"/>
+            <path d="M25 36 Q32 42 39 36" fill="none" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+          </svg>`;
+        }
+
+        const SVG_ART = {
+          // Speech Therapy Animated SVGs
+          soat(active = false) {
+            return `<svg viewBox="0 0 200 160" class="w-full h-36">
+              <circle cx="100" cy="80" r="62" fill="#FEF08A" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="76" cy="65" r="7" fill="#1E293B"/>
+              <circle cx="124" cy="65" r="7" fill="#1E293B"/>
+              <circle cx="78" cy="63" r="2.5" fill="#FFF"/>
+              <circle cx="126" cy="63" r="2.5" fill="#FFF"/>
+              <ellipse cx="62" cy="84" rx="9" ry="5" fill="#FDA4AF"/>
+              <ellipse cx="138" cy="84" rx="9" ry="5" fill="#FDA4AF"/>
+              <ellipse cx="100" cy="102" rx="22" ry="15" fill="#991B1B" stroke="#1E293B" stroke-width="4"/>
+              <g class="${active ? 'anim-tongue-swing' : ''}">
+                <path d="M92 102 Q100 138 108 102 Z" fill="#FB7185" stroke="#1E293B" stroke-width="3.5"/>
+              </g>
+              <circle cx="164" cy="36" r="20" fill="#BAE6FD" stroke="#1E293B" stroke-width="3.5"/>
+              <path d="M164 24 V36 L172 41" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          qayiqcha(active = false) {
+            return `<svg viewBox="0 0 200 160" class="w-full h-36">
+              <path d="M12 132 Q45 118 78 132 T144 132 T190 132 V155 H12 Z" fill="#7DD3FC" stroke="#1E293B" stroke-width="4"/>
+              <g class="${active ? 'anim-boat-rock' : ''}">
+                <path d="M46 105 H154 L138 128 H62 Z" fill="#FB923C" stroke="#1E293B" stroke-width="4.5" stroke-linejoin="round"/>
+                <path d="M100 32 V105" stroke="#1E293B" stroke-width="5" stroke-linecap="round"/>
+                <path d="M102 36 L146 92 H102 Z" fill="#FEF08A" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M98 48 L64 92 H98 Z" fill="#FCA5A5" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+              </g>
+            </svg>`;
+          },
+          murabbo(active = false) {
+            return `<svg viewBox="0 0 200 160" class="w-full h-36">
+              <circle cx="100" cy="80" r="60" fill="#FED7AA" stroke="#1E293B" stroke-width="5"/>
+              <path d="M68 62 Q76 54 84 62" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M116 62 Q124 54 132 62" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M76 92 Q100 80 124 92" fill="none" stroke="#EF4444" stroke-width="9" stroke-linecap="round"/>
+              <ellipse cx="100" cy="108" rx="22" ry="13" fill="#991B1B" stroke="#1E293B" stroke-width="4"/>
+              <g class="${active ? 'anim-tongue-lick' : ''}">
+                <path d="M88 112 Q100 84 112 112 Z" fill="#FB7185" stroke="#1E293B" stroke-width="3.5"/>
+              </g>
+              <rect x="148" y="88" width="36" height="44" rx="8" fill="#F43F5E" stroke="#1E293B" stroke-width="3.5"/>
+              <rect x="151" y="80" width="30" height="10" rx="3" fill="#FDE047" stroke="#1E293B" stroke-width="3"/>
+            </svg>`;
+          },
+          tishchalar(active = false) {
+            return `<svg viewBox="0 0 200 160" class="w-full h-36">
+              <circle cx="100" cy="80" r="62" fill="#BBF7D0" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="75" cy="60" r="7" fill="#1E293B"/>
+              <circle cx="125" cy="60" r="7" fill="#1E293B"/>
+              <path d="M58 92 Q100 135 142 92 Q100 78 58 92 Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="4.5" stroke-linejoin="round"/>
+              <line x1="80" y1="88" x2="80" y2="110" stroke="#1E293B" stroke-width="3"/>
+              <line x1="100" y1="86" x2="100" y2="114" stroke="#1E293B" stroke-width="3"/>
+              <line x1="120" y1="88" x2="120" y2="110" stroke="#1E293B" stroke-width="3"/>
+              <g class="${active ? 'anim-teeth-shine' : ''}">
+                <path d="M154 44 L158 54 L168 58 L158 62 L154 72 L150 62 L140 58 L150 54 Z" fill="#FDE047" stroke="#1E293B" stroke-width="2.5"/>
+                <path d="M44 48 L47 55 L54 58 L47 61 L44 68 L41 61 L34 58 L41 55 Z" fill="#FDE047" stroke="#1E293B" stroke-width="2.5"/>
+              </g>
+            </svg>`;
+          },
+
+          // Animals
+          kuchukcha() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <ellipse cx="42" cy="72" rx="20" ry="36" transform="rotate(15 42 72)" fill="#92400E" stroke="#1E293B" stroke-width="4.5"/>
+              <ellipse cx="138" cy="72" rx="20" ry="36" transform="rotate(-15 138 72)" fill="#92400E" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="90" cy="84" r="52" fill="#F59E0B" stroke="#1E293B" stroke-width="5"/>
+              <ellipse cx="90" cy="100" rx="26" ry="20" fill="#FEF3C7"/>
+              <circle cx="70" cy="72" r="7" fill="#1E293B"/>
+              <circle cx="110" cy="72" r="7" fill="#1E293B"/>
+              <circle cx="72" cy="70" r="2.5" fill="#FFF"/>
+              <circle cx="112" cy="70" r="2.5" fill="#FFF"/>
+              <ellipse cx="90" cy="92" rx="10" ry="7" fill="#1E293B"/>
+              <path d="M78 106 Q90 116 102 106" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+              <path d="M84 112 Q90 126 96 112 Z" fill="#FB7185" stroke="#1E293B" stroke-width="3"/>
+            </svg>`;
+          },
+          mushukcha() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <polygon points="44,68 38,20 78,44" fill="#FDBA74" stroke="#1E293B" stroke-width="4.5" stroke-linejoin="round"/>
+              <polygon points="136,68 142,20 102,44" fill="#FDBA74" stroke="#1E293B" stroke-width="4.5" stroke-linejoin="round"/>
+              <polygon points="50,60 46,32 70,46" fill="#FDA4AF"/>
+              <polygon points="130,60 134,32 110,46" fill="#FDA4AF"/>
+              <circle cx="90" cy="88" r="50" fill="#FED7AA" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="70" cy="80" r="7" fill="#1E293B"/>
+              <circle cx="110" cy="80" r="7" fill="#1E293B"/>
+              <circle cx="72" cy="78" r="2.5" fill="#FFF"/>
+              <circle cx="112" cy="78" r="2.5" fill="#FFF"/>
+              <polygon points="84,92 96,92 90,99" fill="#FB7185" stroke="#1E293B" stroke-width="2.5"/>
+              <path d="M76 105 Q84 112 90 104 Q96 112 104 105" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="34" y1="88" x2="60" y2="92" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+              <line x1="34" y1="100" x2="60" y2="98" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+              <line x1="146" y1="88" x2="120" y2="92" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+              <line x1="146" y1="100" x2="120" y2="98" stroke="#1E293B" stroke-width="3" stroke-linecap="round"/>
+            </svg>`;
+          },
+          sigir() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <path d="M52 44 Q42 22 62 28" fill="#FDE047" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+              <path d="M128 44 Q138 22 118 28" fill="#FDE047" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+              <ellipse cx="38" cy="64" rx="18" ry="10" transform="rotate(-20 38 64)" fill="#FFFFFF" stroke="#1E293B" stroke-width="4"/>
+              <ellipse cx="142" cy="64" rx="18" ry="10" transform="rotate(20 142 64)" fill="#FFFFFF" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="90" cy="84" r="50" fill="#FFFFFF" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="66" cy="58" r="14" fill="#334155"/>
+              <circle cx="116" cy="70" r="10" fill="#334155"/>
+              <circle cx="72" cy="76" r="6.5" fill="#1E293B"/>
+              <circle cx="108" cy="76" r="6.5" fill="#1E293B"/>
+              <ellipse cx="90" cy="108" rx="34" ry="22" fill="#FDA4AF" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="77" cy="104" r="4" fill="#1E293B"/>
+              <circle cx="103" cy="104" r="4" fill="#1E293B"/>
+              <path d="M78 116 Q90 124 102 116" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          xoroz() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <path d="M68 40 Q76 16 90 28 Q104 14 114 36 Q128 24 126 48 Z" fill="#EF4444" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+              <circle cx="90" cy="88" r="46" fill="#FEF08A" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="72" cy="78" r="6.5" fill="#1E293B"/>
+              <circle cx="108" cy="78" r="6.5" fill="#1E293B"/>
+              <polygon points="80,90 100,90 90,108" fill="#F97316" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+              <ellipse cx="90" cy="118" rx="10" ry="12" fill="#EF4444" stroke="#1E293B" stroke-width="3.5"/>
+            </svg>`;
+          },
+          quyoncha() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <ellipse cx="68" cy="40" rx="14" ry="34" transform="rotate(-8 68 40)" fill="#FFFFFF" stroke="#1E293B" stroke-width="4.5"/>
+              <ellipse cx="112" cy="40" rx="14" ry="34" transform="rotate(8 112 40)" fill="#FFFFFF" stroke="#1E293B" stroke-width="4.5"/>
+              <ellipse cx="68" cy="42" rx="7" ry="22" transform="rotate(-8 68 42)" fill="#FDA4AF"/>
+              <ellipse cx="112" cy="42" rx="7" ry="22" transform="rotate(8 112 42)" fill="#FDA4AF"/>
+              <circle cx="90" cy="96" r="46" fill="#FFFFFF" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="72" cy="88" r="6.5" fill="#1E293B"/>
+              <circle cx="108" cy="88" r="6.5" fill="#1E293B"/>
+              <ellipse cx="60" cy="100" rx="8" ry="5" fill="#FECDD3"/>
+              <ellipse cx="120" cy="100" rx="8" ry="5" fill="#FECDD3"/>
+              <polygon points="84,96 96,96 90,103" fill="#FB7185" stroke="#1E293B" stroke-width="2.5"/>
+              <path d="M80 110 Q90 118 100 110" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          qurbaqa() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <circle cx="60" cy="54" r="20" fill="#4ADE80" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="120" cy="54" r="20" fill="#4ADE80" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="60" cy="54" r="11" fill="#FFFFFF"/>
+              <circle cx="120" cy="54" r="11" fill="#FFFFFF"/>
+              <circle cx="60" cy="54" r="6" fill="#1E293B"/>
+              <circle cx="120" cy="54" r="6" fill="#1E293B"/>
+              <ellipse cx="90" cy="96" rx="56" ry="40" fill="#4ADE80" stroke="#1E293B" stroke-width="5"/>
+              <ellipse cx="90" cy="112" rx="38" ry="18" fill="#BBF7D0"/>
+              <path d="M58 94 Q90 118 122 94" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          // Extra animals for games (Big/Small, Food match)
+          fil() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <ellipse cx="42" cy="80" rx="28" ry="38" fill="#93C5FD" stroke="#1E293B" stroke-width="4.5"/>
+              <ellipse cx="138" cy="80" rx="28" ry="38" fill="#93C5FD" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="90" cy="82" r="46" fill="#BFDBFE" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="72" cy="70" r="6" fill="#1E293B"/>
+              <circle cx="108" cy="70" r="6" fill="#1E293B"/>
+              <path d="M84 86 Q82 126 104 128 Q114 128 110 116 Q98 118 96 86 Z" fill="#93C5FD" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+            </svg>`;
+          },
+          maymun() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <circle cx="40" cy="82" r="18" fill="#B45309" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="140" cy="82" r="18" fill="#B45309" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="90" cy="82" r="48" fill="#B45309" stroke="#1E293B" stroke-width="5"/>
+              <ellipse cx="90" cy="96" rx="34" ry="26" fill="#FDE68A"/>
+              <circle cx="74" cy="74" r="6.5" fill="#1E293B"/>
+              <circle cx="106" cy="74" r="6.5" fill="#1E293B"/>
+              <path d="M72 98 Q90 114 108 98" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+            </svg>`;
+          },
+          sichqoncha() {
+            return `<svg viewBox="0 0 180 160" class="w-full h-32">
+              <circle cx="52" cy="52" r="24" fill="#CBD5E1" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="128" cy="52" r="24" fill="#CBD5E1" stroke="#1E293B" stroke-width="4.5"/>
+              <circle cx="52" cy="52" r="14" fill="#FDA4AF"/>
+              <circle cx="128" cy="52" r="14" fill="#FDA4AF"/>
+              <ellipse cx="90" cy="94" rx="44" ry="38" fill="#E2E8F0" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="72" cy="84" r="6" fill="#1E293B"/>
+              <circle cx="108" cy="84" r="6" fill="#1E293B"/>
+              <circle cx="90" cy="100" r="7" fill="#FB7185" stroke="#1E293B" stroke-width="2.5"/>
+            </svg>`;
+          },
+
+          // Fruits & Vegetables
+          olma() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M80 42 Q80 20 96 18" fill="none" stroke="#78350F" stroke-width="6" stroke-linecap="round"/>
+              <ellipse cx="104" cy="28" rx="16" ry="8" transform="rotate(-20 104 28)" fill="#4ADE80" stroke="#1E293B" stroke-width="3.5"/>
+              <path d="M80 48 C48 34 26 64 32 98 C38 134 66 142 80 134 C94 142 122 134 128 98 C134 64 112 34 80 48 Z" fill="#EF4444" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="64" cy="84" r="5.5" fill="#1E293B"/>
+              <circle cx="96" cy="84" r="5.5" fill="#1E293B"/>
+              <path d="M68 98 Q80 110 92 98" fill="none" stroke="#1E293B" stroke-width="4" stroke-linecap="round"/>
+              <ellipse cx="52" cy="68" rx="7" ry="12" transform="rotate(20 52 68)" fill="#FCA5A5" opacity="0.65"/>
+            </svg>`;
+          },
+          banan() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M36 112 Q88 136 128 52 Q134 36 124 28 Q112 34 106 46 Q78 96 36 96 Q24 98 36 112 Z" fill="#FACC15" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="78" cy="88" r="4.5" fill="#1E293B"/>
+              <circle cx="96" cy="78" r="4.5" fill="#1E293B"/>
+              <path d="M82 96 Q92 100 98 90" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          uzum() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M80 28 V46" stroke="#78350F" stroke-width="6" stroke-linecap="round"/>
+              <ellipse cx="98" cy="30" rx="14" ry="8" fill="#4ADE80" stroke="#1E293B" stroke-width="3.5"/>
+              <circle cx="58" cy="64" r="18" fill="#A855F7" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="82" cy="64" r="18" fill="#A855F7" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="106" cy="64" r="18" fill="#A855F7" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="68" cy="92" r="18" fill="#9333EA" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="94" cy="92" r="18" fill="#9333EA" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="81" cy="118" r="18" fill="#7E22CE" stroke="#1E293B" stroke-width="4"/>
+              <circle cx="75" cy="90" r="3.5" fill="#FFF"/>
+              <circle cx="89" cy="90" r="3.5" fill="#FFF"/>
+              <path d="M74 98 Q82 104 90 98" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round"/>
+            </svg>`;
+          },
+          qulupnay() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M52 46 Q80 24 108 46 L94 56 L80 46 L66 56 Z" fill="#22C55E" stroke="#1E293B" stroke-width="4" stroke-linejoin="round"/>
+              <path d="M40 62 C36 96 62 138 80 140 C98 138 124 96 120 62 C116 44 44 44 40 62 Z" fill="#F43F5E" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="64" cy="82" r="5" fill="#1E293B"/>
+              <circle cx="96" cy="82" r="5" fill="#1E293B"/>
+              <path d="M70 96 Q80 105 90 96" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="56" cy="108" r="2.5" fill="#FEF08A"/>
+              <circle cx="104" cy="108" r="2.5" fill="#FEF08A"/>
+              <circle cx="80" cy="122" r="2.5" fill="#FEF08A"/>
+            </svg>`;
+          },
+          sabzi() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M80 44 Q62 16 54 28 M80 44 Q80 12 80 22 M80 44 Q98 16 106 28" fill="none" stroke="#16A34A" stroke-width="7" stroke-linecap="round"/>
+              <path d="M52 48 Q80 38 108 48 L88 136 Q80 146 72 136 Z" fill="#F97316" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="70" cy="76" r="4.5" fill="#1E293B"/>
+              <circle cx="90" cy="76" r="4.5" fill="#1E293B"/>
+              <path d="M72 88 Q80 96 88 88" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          tarvuz() {
+            return `<svg viewBox="0 0 160 160" class="w-full h-32">
+              <path d="M24 66 A58 58 0 0 0 136 66 Z" fill="#16A34A" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+              <path d="M34 66 A48 48 0 0 0 126 66 Z" fill="#EF4444" stroke="#1E293B" stroke-width="3.5"/>
+              <circle cx="64" cy="84" r="4" fill="#1E293B"/>
+              <circle cx="96" cy="84" r="4" fill="#1E293B"/>
+              <path d="M70 96 Q80 104 90 96" fill="none" stroke="#1E293B" stroke-width="3.5" stroke-linecap="round"/>
+              <circle cx="52" cy="76" r="2.5" fill="#1E293B"/>
+              <circle cx="108" cy="76" r="2.5" fill="#1E293B"/>
+            </svg>`;
+          },
+
+          // Extra foods for "Kim nima yeydi?"
+          sut() {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <rect x="42" y="34" width="56" height="82" rx="12" fill="#FFFFFF" stroke="#1E293B" stroke-width="5"/>
+              <rect x="42" y="54" width="56" height="48" fill="#E0F2FE"/>
+              <path d="M52 24 H88 L96 36 H44 Z" fill="#38BDF8" stroke="#1E293B" stroke-width="4.5" stroke-linejoin="round"/>
+              <circle cx="70" cy="78" r="10" fill="#FFFFFF" stroke="#1E293B" stroke-width="3"/>
+            </svg>`;
+          },
+          suyak() {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <path d="M36 56 A12 12 0 1 1 50 44 L90 44 A12 12 0 1 1 104 56 L104 84 A12 12 0 1 1 90 96 L50 96 A12 12 0 1 1 36 84 Z" fill="#FEF9C3" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+            </svg>`;
+          },
+          pishloq() {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <polygon points="24,98 116,98 100,40" fill="#FACC15" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="66" cy="82" r="7" fill="#CA8A04"/>
+              <circle cx="92" cy="72" r="5" fill="#CA8A04"/>
+              <circle cx="84" cy="88" r="4" fill="#CA8A04"/>
+            </svg>`;
+          },
+
+          // Shapes
+          doira(color = '#EF4444') {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <circle cx="70" cy="70" r="52" fill="${color}" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="54" cy="62" r="5" fill="#1E293B"/>
+              <circle cx="86" cy="62" r="5" fill="#1E293B"/>
+              <path d="M56 80 Q70 92 84 80" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          uchburchak(color = '#3B82F6') {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <polygon points="70,16 126,118 14,118" fill="${color}" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="56" cy="82" r="5" fill="#1E293B"/>
+              <circle cx="84" cy="82" r="5" fill="#1E293B"/>
+              <path d="M58 96 Q70 106 82 96" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          tortburchak(color = '#10B981') {
+            return `<svg viewBox="0 0 140 140" class="w-28 h-28 mx-auto">
+              <rect x="20" y="20" width="100" height="100" rx="14" fill="${color}" stroke="#1E293B" stroke-width="5"/>
+              <circle cx="52" cy="62" r="5" fill="#1E293B"/>
+              <circle cx="88" cy="62" r="5" fill="#1E293B"/>
+              <path d="M54 84 Q70 96 86 84" fill="none" stroke="#1E293B" stroke-width="4.5" stroke-linecap="round"/>
+            </svg>`;
+          },
+          car() {
+            return `<svg viewBox="0 0 100 130" class="w-full h-full">
+              <rect x="14" y="26" width="12" height="24" rx="5" fill="#1E293B"/>
+              <rect x="74" y="26" width="12" height="24" rx="5" fill="#1E293B"/>
+              <rect x="14" y="82" width="12" height="24" rx="5" fill="#1E293B"/>
+              <rect x="74" y="82" width="12" height="24" rx="5" fill="#1E293B"/>
+              <rect x="20" y="14" width="60" height="102" rx="22" fill="#EF4444" stroke="#1E293B" stroke-width="5"/>
+              <rect x="28" y="34" width="44" height="28" rx="10" fill="#BAE6FD" stroke="#1E293B" stroke-width="4"/>
+              <rect x="30" y="76" width="40" height="18" rx="7" fill="#BAE6FD" stroke="#1E293B" stroke-width="3.5"/>
+              <circle cx="33" cy="22" r="5" fill="#FEF08A" stroke="#1E293B" stroke-width="2"/>
+              <circle cx="67" cy="22" r="5" fill="#FEF08A" stroke="#1E293B" stroke-width="2"/>
+            </svg>`;
+          }
+        };
+
+        /* =========================================================
+           3. EDUCATIONAL DATA (LOGOPEDIYA, GALEREYA, RANG, SHAKL)
+           ========================================================= */
+        const EXERCISES = [
+          {
+            id: 'soat',
+            title: 'Soat',
+            badge: 'Tik-tak!',
+            bg: 'bg-amber-100',
+            instruction: "Tilimizni chapga va o'ngga soat kabi tebratamiz!",
+            speech: "Soat mashqi! Tik-tak, tik-tak! Tilimizni chapga va o'ngga soat kabi tebratamiz!"
+          },
+          {
+            id: 'qayiqcha',
+            title: 'Qayiqcha',
+            badge: 'Fu-u-u!',
+            bg: 'bg-sky-100',
+            instruction: 'Tilning chetlarini bukib qayiqcha yasaymiz va puflaymiz!',
+            speech: "Qayiqcha mashqi! Tilimizni qayiqcha qilib bukamiz va ohista puflaymiz!"
+          },
+          {
+            id: 'murabbo',
+            title: 'Shirin murabbo',
+            badge: 'M-m-m!',
+            bg: 'bg-rose-100',
+            instruction: 'Yuqori labimizdagi shirin murabboni til bilan yalaymiz!',
+            speech: "Shirin murabbo mashqi! Yuqori labimizni til uchi bilan mazza qilib yalaymiz!"
+          },
+          {
+            id: 'tishchalar',
+            title: 'Tishchalar',
+            badge: 'Tabassum!',
+            bg: 'bg-emerald-100',
+            instruction: "Katta tabassum qilib tishchalarimizni ko'rsatamiz!",
+            speech: "Tishchalar mashqi! Chiroyli tabassum qilamiz va tishchalarimizni til bilan tozalaymiz!"
+          }
+        ];
+
+        const LETTERS = [
+          {
+            char: 'A',
+            color: 'bg-rose-300',
+            tip: "Og'zimizni katta ochamiz: A-a-a!",
+            speech: "A harfi! Og'zimizni katta ochib aytamiz: Aaa!"
+          },
+          {
+            char: 'O',
+            color: 'bg-amber-300',
+            tip: "Lablarimizni dumaloq qilamiz: O-o-o!",
+            speech: "O harfi! Lablarimizni dumaloq qilib aytamiz: Ooo!"
+          },
+          {
+            char: 'U',
+            color: 'bg-sky-300',
+            tip: "Lablarni oldinga cho'zamiz: U-u-u!",
+            speech: "U harfi! Lablarimizni naycha qilib aytamiz: Uuu!"
+          },
+          {
+            char: 'I',
+            color: 'bg-emerald-300',
+            tip: "Quvnoq tabassum qilamiz: I-i-i!",
+            speech: "I harfi! Keng tabassum qilib aytamiz: Iii!"
+          },
+          {
+            char: 'E',
+            color: 'bg-violet-300',
+            tip: "Yumshoq va quvnoq aytamiz: E-e-e!",
+            speech: "E harfi! Yumshoq qilib aytamiz: Eee!"
+          },
+          {
+            char: 'M',
+            color: 'bg-orange-300',
+            tip: "Lablarni yumib g'o'ng'illaymiz: M-m-m!",
+            speech: "M harfi! Lablarni yopib aytamiz: Mmm, mazali!"
+          },
+          {
+            char: 'B',
+            color: 'bg-teal-300',
+            tip: "Lablarni ochib portlatamiz: B-b-b!",
+            speech: "B harfi! Lablarni quvnoq ochib aytamiz: B, b, bolajon!"
+          }
+        ];
+
+        const ANIMALS = [
+          {
+            id: 'kuchukcha',
+            name: 'Kuchukcha',
+            sound: 'Vov-vov!',
+            bg: 'bg-amber-100',
+            desc: "Kuchukcha vov-vov deydi. U juda do'stona va o'yinqaroq!"
+          },
+          {
+            id: 'mushukcha',
+            name: 'Mushukcha',
+            sound: 'Miyov-miyov!',
+            bg: 'bg-orange-100',
+            desc: "Mushukcha miyov-miyov deydi. U yumshoq va sut ichishni yaxshi ko'radi."
+          },
+          {
+            id: 'sigir',
+            name: 'Sigir',
+            sound: 'Muu-muu!',
+            bg: 'bg-sky-100',
+            desc: "Sigir muu deydi. U bizga shirin va foydali sut beradi."
+          },
+          {
+            id: 'xoroz',
+            name: "Xo'roz",
+            sound: 'Qu-qu-ri-qu!',
+            bg: 'bg-yellow-100',
+            desc: "Xo'roz ertalab qu-qu-ri-qu deb hammani uyg'otadi."
+          },
+          {
+            id: 'quyoncha',
+            name: 'Quyoncha',
+            sound: 'Shirp-shirp!',
+            bg: 'bg-pink-100',
+            desc: "Quyoncha uzun quloqli va sakrashni yaxshi ko'radi. U sabzi yeydi."
+          },
+          {
+            id: 'qurbaqa',
+            name: 'Qurbaqa',
+            sound: 'Va-vaq!',
+            bg: 'bg-emerald-100',
+            desc: "Yashil qurbaqa suv bo'yida va-vaq deb baland sakraydi."
+          }
+        ];
+
+        const FRUITS = [
+          {
+            id: 'olma',
+            name: 'Olma',
+            bg: 'bg-rose-100',
+            desc: "Qizil olma shirin va foydali! Uni yuvib yeymiz."
+          },
+          {
+            id: 'banan',
+            name: 'Banan',
+            bg: 'bg-yellow-100',
+            desc: "Sariq banan yumshoq va juda mazali meva."
+          },
+          {
+            id: 'uzum',
+            name: 'Uzum',
+            bg: 'bg-purple-100',
+            desc: "Shirin uzum donachalari bir-biriga yopishib turadi."
+          },
+          {
+            id: 'qulupnay',
+            name: 'Qulupnay',
+            bg: 'bg-pink-100',
+            desc: "Xushbo'y qizil qulupnay yozda bog'da pishadi."
+          },
+          {
+            id: 'sabzi',
+            name: 'Sabzi',
+            bg: 'bg-orange-100',
+            desc: "To'q sariq sabzi ko'zlarimizni o'tkir va sog'lom qiladi."
+          },
+          {
+            id: 'tarvuz',
+            name: 'Tarvuz',
+            bg: 'bg-emerald-100',
+            desc: "Katta yashil tarvuzning ichi qip-qizil va suvli!"
+          }
+        ];
+
+        const COLORS = [
+          {
+            id: 'qizil',
+            name: 'Qizil',
+            hex: '#EF4444',
+            bgHex: '#FEE2E2',
+            cardBg: 'bg-red-500 text-white',
+            speech: "Bu qizil rang! Qizil olma va qulupnay kabi!"
+          },
+          {
+            id: 'kok',
+            name: "Ko'k",
+            hex: '#3B82F6',
+            bgHex: '#DBEAFE',
+            cardBg: 'bg-blue-500 text-white',
+            speech: "Bu ko'k rang! Musaffo osmon va dengiz kabi!"
+          },
+          {
+            id: 'sariq',
+            name: 'Sariq',
+            hex: '#FACC15',
+            bgHex: '#FEF9C3',
+            cardBg: 'bg-yellow-400 text-slate-900',
+            speech: "Bu sariq rang! Issiq quyosh va banan kabi!"
+          },
+          {
+            id: 'yashil',
+            name: 'Yashil',
+            hex: '#10B981',
+            bgHex: '#D1FAE5',
+            cardBg: 'bg-emerald-500 text-white',
+            speech: "Bu yashil rang! Yam-yashil o't va barglar kabi!"
+          }
+        ];
+
+        const SHAPES = [
+          {
+            id: 'doira',
+            name: 'Doira',
+            color: '#EF4444',
+            bg: 'bg-rose-100',
+            speech: "Bu doira! Uning burchagi yo'q, koptok kabi yumaloq."
+          },
+          {
+            id: 'uchburchak',
+            name: 'Uchburchak',
+            color: '#3B82F6',
+            bg: 'bg-sky-100',
+            speech: "Bu uchburchak! Uning uchta burchagi va uchta tomoni bor."
+          },
+          {
+            id: 'tortburchak',
+            name: "To'rtburchak",
+            color: '#10B981',
+            bg: 'bg-emerald-100',
+            speech: "Bu to'rtburchak! Uning to'rtta burchagi bor, deraza kabi."
+          }
+        ];
+
+        /* =========================================================
+           4. RENDER CORE EDUCATIONAL SECTIONS
+           ========================================================= */
+        els.brandLogoIcon.innerHTML = svgSunLogo();
+
+        function renderExercises() {
+          els.exercisesGrid.innerHTML = '';
+          EXERCISES.forEach((ex) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `kid-card ${ex.bg} rounded-[2rem] p-5 text-center flex flex-col items-center justify-between cursor-pointer`;
+            btn.innerHTML = `
+              <div class="w-full mb-2" data-art="${ex.id}">${SVG_ART[ex.id](false)}</div>
+              <div>
+                <div class="font-display text-2xl font-bold text-slate-900">${ex.title}</div>
+                <div class="text-sm font-extrabold text-rose-600 mt-0.5">${ex.badge}</div>
+                <p class="text-sm font-bold text-slate-700 mt-2 leading-snug">${ex.instruction}</p>
+              </div>
+            `;
+            btn.addEventListener('click', () => {
+              SFX.pop();
+              // Reset all exercise animations, activate clicked one
+              els.exercisesGrid.querySelectorAll('[data-art]').forEach((box) => {
+                const id = box.getAttribute('data-art');
+                box.innerHTML = SVG_ART[id](false);
+              });
+              const artBox = btn.querySelector('[data-art]');
+              artBox.innerHTML = SVG_ART[ex.id](true);
+              btn.classList.remove('anim-bounce');
+              void btn.offsetWidth;
+              btn.classList.add('anim-bounce');
+              speakUzbek(ex.speech);
+            });
+            els.exercisesGrid.appendChild(btn);
+          });
+        }
+
+        function renderLetters() {
+          els.lettersGrid.innerHTML = '';
+          LETTERS.forEach((item) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `kid-card ${item.color} rounded-3xl py-6 px-4 flex flex-col items-center justify-center cursor-pointer`;
+            btn.innerHTML = `
+              <span class="font-display text-5xl sm:text-6xl font-bold text-slate-900 leading-none">${item.char}</span>
+              <span class="text-xs font-extrabold text-slate-800 mt-2">Talaffuz</span>
+            `;
+            btn.addEventListener('click', () => {
+              SFX.pop();
+              btn.classList.remove('anim-bounce');
+              void btn.offsetWidth;
+              btn.classList.add('anim-bounce');
+              els.letterMouthText.textContent = `${item.char}: ${item.tip}`;
+              speakUzbek(item.speech);
+            });
+            els.lettersGrid.appendChild(btn);
+          });
+        }
+
+        function renderGallery() {
+          els.animalsGrid.innerHTML = '';
+          ANIMALS.forEach((animal) => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = `kid-card ${animal.bg} rounded-[2rem] p-5 text-left flex flex-col items-center cursor-pointer`;
+            card.innerHTML = `
+              <div class="w-full">${SVG_ART[animal.id]()}</div>
+              <div class="w-full text-center mt-2">
+                <h3 class="font-display text-2xl font-bold text-slate-900">${animal.name}</h3>
+                <p class="text-base font-extrabold text-amber-700 mt-0.5">${animal.sound}</p>
+                <p class="text-sm font-bold text-slate-700 mt-2">${animal.desc}</p>
+              </div>
+            `;
+            card.addEventListener('click', () => {
+              SFX.pop();
+              card.classList.remove('anim-wiggle');
+              void card.offsetWidth;
+              card.classList.add('anim-wiggle');
+              speakUzbek(`${animal.name}! ${animal.sound} ${animal.desc}`);
+            });
+            els.animalsGrid.appendChild(card);
+          });
+
+          els.fruitsGrid.innerHTML = '';
+          FRUITS.forEach((fruit) => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = `kid-card ${fruit.bg} rounded-[2rem] p-5 text-left flex flex-col items-center cursor-pointer`;
+            card.innerHTML = `
+              <div class="w-full">${SVG_ART[fruit.id]()}</div>
+              <div class="w-full text-center mt-2">
+                <h3 class="font-display text-2xl font-bold text-slate-900">${fruit.name}</h3>
+                <p class="text-sm font-bold text-slate-700 mt-2">${fruit.desc}</p>
+              </div>
+            `;
+            card.addEventListener('click', () => {
+              SFX.pop();
+              card.classList.remove('anim-bounce');
+              void card.offsetWidth;
+              card.classList.add('anim-bounce');
+              speakUzbek(`${fruit.name}! ${fruit.desc}`);
+            });
+            els.fruitsGrid.appendChild(card);
+          });
+        }
+
+        function renderColorsAndShapes() {
+          els.colorsGrid.innerHTML = '';
+          COLORS.forEach((col) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `kid-card ${col.cardBg} rounded-[2rem] p-6 flex flex-col items-center justify-center min-h-[170px] cursor-pointer`;
+            btn.innerHTML = `
+              <div class="w-16 h-16 rounded-full bg-white/30 border-[3px] border-slate-900 mb-3 flex items-center justify-center text-3xl">🎨</div>
+              <span class="font-display text-3xl font-bold">${col.name}</span>
+            `;
+            btn.addEventListener('click', () => {
+              SFX.pop();
+              document.body.style.backgroundColor = col.bgHex;
+              btn.classList.remove('anim-bounce');
+              void btn.offsetWidth;
+              btn.classList.add('anim-bounce');
+              speakUzbek(col.speech);
+            });
+            els.colorsGrid.appendChild(btn);
+          });
+
+          els.shapesGrid.innerHTML = '';
+          SHAPES.forEach((shape) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `kid-card ${shape.bg} rounded-[2rem] p-6 flex flex-col items-center text-center cursor-pointer`;
+            btn.innerHTML = `
+              ${SVG_ART[shape.id](shape.color)}
+              <h3 class="font-display text-2xl font-bold text-slate-900 mt-3">${shape.name}</h3>
+            `;
+            btn.addEventListener('click', () => {
+              SFX.pop();
+              btn.classList.remove('anim-wiggle');
+              void btn.offsetWidth;
+              btn.classList.add('anim-wiggle');
+              speakUzbek(shape.speech);
+            });
+            els.shapesGrid.appendChild(btn);
+          });
+        }
+
+        els.resetBgBtn.addEventListener('click', () => {
+          SFX.pop();
+          document.body.style.backgroundColor = '#f8fafc';
+          speakUzbek('Oq fon tiklandi!');
+        });
+
+        /* =========================================================
+           5. 11 INTERACTIVE MINI-GAMES REGISTRY & ENGINE
+           ========================================================= */
+        const GAMES = [
+          { id: 'hayvon-ovoz', num: 1, icon: '🐾', title: 'Hayvon ovozini top', bg: 'bg-amber-100', desc: 'Ovoziga qarab hayvonni top!' },
+          { id: 'rang-mos', num: 2, icon: '🎨', title: 'Ranglarni moslashtir', bg: 'bg-sky-100', desc: "To'g'ri rangdagi koptokni bos!" },
+          { id: 'meva-savat', num: 3, icon: '🍎', title: "Mevalarni savatga yig'", bg: 'bg-rose-100', desc: 'Mevalarni savatga solib sana!' },
+          { id: 'katta-kichik', num: 4, icon: '🐘', title: 'Katta va Kichik', bg: 'bg-indigo-100', desc: 'Kattasini yoki kichigini top!' },
+          { id: 'kim-yeydi', num: 5, icon: '🥕', title: 'Kim nima yeydi?', bg: 'bg-orange-100', desc: 'Hayvonchani ovqatlantir!' },
+          { id: 'shakllar-uyi', num: 6, icon: '⭕', title: 'Shakllar uyi', bg: 'bg-emerald-100', desc: "Shakllarni o'z uyiga joylashtir!" },
+          { id: 'harf-top', num: 7, icon: '🗣️', title: 'Harflarni aytamiz', bg: 'bg-violet-100', desc: 'Aytilgan harfni topib bos!' },
+          { id: 'sehrli-sharlar', num: 8, icon: '🎈', title: 'Sehrli sharlar', bg: 'bg-pink-100', desc: 'Uchayotgan sharlarni portlat!' },
+          { id: 'soya-top', num: 9, icon: '🐈', title: 'Soyasini top', bg: 'bg-teal-100', desc: 'Qora soyaga mos rasmni top!' },
+          { id: 'quvnoq-qarsak', num: 10, icon: '👏', title: 'Quvnoq barmoqlar va qarsak', bg: 'bg-yellow-100', desc: 'Qarsak chalib quvonch yig!' },
+          { id: 'kichkintoy-poygasi', num: 11, icon: '🏎️', title: 'Kichkintoy poygasi', bg: 'bg-cyan-100', desc: 'Mashinada yulduzchalar yig!' }
+        ];
+
+        function shuffle(arr) {
+          const copy = arr.slice();
+          for (let i = copy.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+          }
+          return copy;
+        }
+
+        function pickRandom(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function renderGamesHub() {
+          els.gamesHubGrid.innerHTML = '';
+          GAMES.forEach((g) => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = `kid-card ${g.bg} rounded-3xl p-5 text-left flex flex-col justify-between min-h-[168px] cursor-pointer`;
+            card.innerHTML = `
+              <div class="flex items-center justify-between w-full">
+                <span class="text-4xl">${g.icon}</span>
+                <span class="font-display text-sm font-bold text-slate-700">${g.num}-o'yin</span>
+              </div>
+              <div class="mt-3">
+                <h3 class="font-display text-xl font-bold text-slate-900 leading-snug">${g.title}</h3>
+                <p class="text-sm font-bold text-slate-700 mt-1">${g.desc}</p>
+              </div>
+            `;
+            card.addEventListener('click', () => startGame(g.id));
+            els.gamesHubGrid.appendChild(card);
+          });
+        }
+
+        let currentGamePromptFn = () => {};
+
+        function exitActiveGame() {
+          if (state.cleanupGame) {
+            state.cleanupGame();
+            state.cleanupGame = null;
+          }
+          if (state.raceRaf) {
+            cancelAnimationFrame(state.raceRaf);
+            state.raceRaf = null;
+          }
+          state.activeGameId = null;
+          els.gameStage.innerHTML = '';
+          els.gameArenaView.classList.add('hidden');
+          els.gamesMenuView.classList.remove('hidden');
+        }
+
+        els.backToGamesBtn.addEventListener('click', () => {
+          SFX.pop();
+          exitActiveGame();
+          speakUzbek("O'yinlar ro'yxatiga qaytdik!");
+        });
+
+        els.gamePromptAudioBtn.addEventListener('click', () => {
+          SFX.pop();
+          currentGamePromptFn();
+        });
+
+        function startGame(gameId) {
+          exitActiveGame();
+          const meta = GAMES.find((g) => g.id === gameId);
+          if (!meta) return;
+
+          SFX.pop();
+          state.activeGameId = gameId;
+          els.activeGameTitle.textContent = `${meta.icon} ${meta.title}`;
+          els.gamesMenuView.classList.add('hidden');
+          els.gameArenaView.classList.remove('hidden');
+
+          let localScore = 0;
+          function updateLocalScore(delta = 1) {
+            localScore += delta;
+            els.gameScorePill.textContent = `⭐ ${localScore}`;
+            addStar(delta);
+          }
+          els.gameScorePill.textContent = '⭐ 0';
+
+          /* ---- GAME 1: Hayvon ovozini top ---- */
+          if (gameId === 'hayvon-ovoz') {
+            function nextRound() {
+              const target = pickRandom(ANIMALS);
+              const others = shuffle(ANIMALS.filter((a) => a.id !== target.id)).slice(0, 2);
+              const options = shuffle([target, ...others]);
+
+              const promptText = `${target.sound} Bu qaysi hayvon?`;
+              currentGamePromptFn = () => speakUzbek(promptText);
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl text-center space-y-6">
+                  <div class="bg-amber-100 border-[3px] border-slate-800 rounded-3xl p-5 inline-flex items-center gap-4">
+                    <span class="text-4xl">🔊</span>
+                    <span class="font-display text-3xl sm:text-4xl font-bold text-slate-900">"${target.sound}"</span>
+                  </div>
+                  <p class="text-xl font-extrabold text-slate-700">Qaysi hayvon shunday deydi?</p>
+                  <div id="g1-opts" class="grid grid-cols-1 sm:grid-cols-3 gap-5"></div>
+                </div>
+              `;
+              const grid = document.getElementById('g1-opts');
+              options.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `kid-card ${opt.bg} rounded-3xl p-5 flex flex-col items-center cursor-pointer`;
+                btn.innerHTML = `
+                  ${SVG_ART[opt.id]()}
+                  <span class="font-display text-2xl font-bold text-slate-900 mt-2">${opt.name}</span>
+                `;
+                btn.addEventListener('click', () => {
+                  if (opt.id === target.id) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    speakUzbek(`Barakalla! Bu ${target.name}! ${target.sound}`);
+                    setTimeout(nextRound, 1400);
+                  } else {
+                    SFX.gentleOops();
+                    btn.classList.remove('anim-wiggle');
+                    void btn.offsetWidth;
+                    btn.classList.add('anim-wiggle');
+                    speakUzbek(`Yo'q, bu ${opt.name}. Yana urinib ko'r!`);
+                  }
+                });
+                grid.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 2: Ranglarni moslashtir ---- */
+          else if (gameId === 'rang-mos') {
+            function nextRound() {
+              const target = pickRandom(COLORS);
+              const options = shuffle(COLORS);
+
+              const promptText = `${target.name} rangdagi koptokni toping!`;
+              currentGamePromptFn = () => speakUzbek(promptText);
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl text-center space-y-6">
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-24 h-24 rounded-3xl border-[4px] border-slate-800 shadow-[0_6px_0_#1e293b]" style="background:${target.hex}"></div>
+                    <p class="font-display text-2xl sm:text-3xl font-bold text-slate-900">${target.name} rangni toping!</p>
+                  </div>
+                  <div id="g2-opts" class="grid grid-cols-2 sm:grid-cols-4 gap-5"></div>
+                </div>
+              `;
+              const grid = document.getElementById('g2-opts');
+              options.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'kid-card bg-white rounded-3xl p-5 flex flex-col items-center cursor-pointer';
+                btn.innerHTML = `
+                  <svg viewBox="0 0 100 100" class="w-24 h-24">
+                    <circle cx="50" cy="50" r="42" fill="${opt.hex}" stroke="#1E293B" stroke-width="5"/>
+                    <path d="M26 32 Q42 22 52 28" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+                  </svg>
+                  <span class="font-display text-xl font-bold text-slate-900 mt-2">${opt.name}</span>
+                `;
+                btn.addEventListener('click', () => {
+                  if (opt.id === target.id) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    speakUzbek(`Ofarin! Bu ${target.name} rang!`);
+                    setTimeout(nextRound, 1300);
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(`Bu ${opt.name}. Bizga ${target.name} kerak!`);
+                  }
+                });
+                grid.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 3: Mevalarni savatga yig' ---- */
+          else if (gameId === 'meva-savat') {
+            const countWords = ['Bir', 'Ikki', 'Uch', "To'rt", 'Besh', 'Olti'];
+            function setupBasketRound() {
+              let collected = 0;
+              const items = shuffle(FRUITS);
+              currentGamePromptFn = () => speakUzbek("Mevalarni bosing va savatga yig'ing!");
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl flex flex-col items-center space-y-6">
+                  <div id="g3-fruits" class="grid grid-cols-3 sm:grid-cols-6 gap-4 w-full"></div>
+                  <div class="w-full bg-amber-50 border-[3px] border-slate-800 rounded-3xl p-5 flex flex-col items-center">
+                    <div id="g3-basket-items" class="flex flex-wrap items-center justify-center gap-2 min-h-[60px] mb-2"></div>
+                    <svg viewBox="0 0 220 90" class="w-56 h-24">
+                      <path d="M20 20 H200 L176 80 H44 Z" fill="#D97706" stroke="#1E293B" stroke-width="5" stroke-linejoin="round"/>
+                      <line x1="56" y1="20" x2="66" y2="80" stroke="#92400E" stroke-width="4"/>
+                      <line x1="110" y1="20" x2="110" y2="80" stroke="#92400E" stroke-width="4"/>
+                      <line x1="164" y1="20" x2="154" y2="80" stroke="#92400E" stroke-width="4"/>
+                      <rect x="12" y="10" width="196" height="16" rx="8" fill="#F59E0B" stroke="#1E293B" stroke-width="5"/>
+                    </svg>
+                    <p id="g3-status" class="font-display text-2xl font-bold text-slate-900 mt-1">Savatda: 0 / 6</p>
+                  </div>
+                </div>
+              `;
+              const fruitsRow = document.getElementById('g3-fruits');
+              const basketItems = document.getElementById('g3-basket-items');
+              const statusEl = document.getElementById('g3-status');
+
+              items.forEach((f) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `kid-card ${f.bg} rounded-3xl p-3 flex flex-col items-center cursor-pointer`;
+                btn.innerHTML = `${SVG_ART[f.id]()}<span class="font-display text-base font-bold text-slate-900">${f.name}</span>`;
+                btn.addEventListener('click', () => {
+                  if (btn.disabled) return;
+                  btn.disabled = true;
+                  btn.style.opacity = '0.25';
+                  btn.style.transform = 'scale(0.85)';
+                  SFX.star();
+                  collected++;
+                  statusEl.textContent = `Savatda: ${collected} / 6`;
+
+                  const mini = document.createElement('div');
+                  mini.className = 'w-12 h-12 anim-bounce';
+                  mini.innerHTML = SVG_ART[f.id]();
+                  basketItems.appendChild(mini);
+
+                  if (collected === 6) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(2);
+                    speakUzbek("Olti! Savat to'ldi! Barakalla, bolajon!");
+                    setTimeout(setupBasketRound, 2000);
+                  } else {
+                    speakUzbek(`${countWords[collected - 1]}! ${f.name}!`);
+                  }
+                });
+                fruitsRow.appendChild(btn);
+              });
+            }
+            setupBasketRound();
+          }
+
+          /* ---- GAME 4: Katta va Kichik ---- */
+          else if (gameId === 'katta-kichik') {
+            const pairPool = [
+              { id: 'fil', label: 'Fil' },
+              { id: 'olma', label: 'Olma' },
+              { id: 'kuchukcha', label: 'Kuchukcha' },
+              { id: 'tarvuz', label: 'Tarvuz' }
+            ];
+            function nextRound() {
+              const item = pickRandom(pairPool);
+              const askBig = Math.random() > 0.5;
+              const bigOnLeft = Math.random() > 0.5;
+
+              const promptText = askBig
+                ? `Qaysi ${item.label} KATTA? Kattasini bosing!`
+                : `Qaysi ${item.label} KICHIK? Kichigini bosing!`;
+              currentGamePromptFn = () => speakUzbek(promptText);
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl text-center space-y-6">
+                  <p class="font-display text-3xl font-bold text-slate-900">
+                    ${askBig ? '🐘 KATTASINI toping!' : '🐁 KICHIGINI toping!'}
+                  </p>
+                  <div id="g4-pair" class="grid grid-cols-2 gap-6 items-center"></div>
+                </div>
+              `;
+
+              const pairBox = document.getElementById('g4-pair');
+              const sizes = bigOnLeft ? ['big', 'small'] : ['small', 'big'];
+
+              sizes.forEach((sz) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'kid-card bg-indigo-50 rounded-3xl p-6 min-h-[240px] flex flex-col items-center justify-center cursor-pointer';
+                const scaleCls = sz === 'big' ? 'scale-125' : 'scale-50';
+                btn.innerHTML = `<div class="w-40 h-36 flex items-center justify-center ${scaleCls}">${SVG_ART[item.id]()}</div>`;
+                btn.addEventListener('click', () => {
+                  const isCorrect = (askBig && sz === 'big') || (!askBig && sz === 'small');
+                  if (isCorrect) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    speakUzbek(askBig ? 'Barakalla! Bu katta!' : 'Barakalla! Bu kichkina!');
+                    setTimeout(nextRound, 1300);
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(askBig ? 'Bu kichkina. Kattasini toping!' : 'Bu katta. Kichigini toping!');
+                  }
+                });
+                pairBox.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 5: Kim nima yeydi? ---- */
+          else if (gameId === 'kim-yeydi') {
+            const pairs = [
+              { animal: 'quyoncha', animalName: 'Quyoncha', food: 'sabzi', foodName: 'Sabzi' },
+              { animal: 'mushukcha', animalName: 'Mushukcha', food: 'sut', foodName: 'Sut' },
+              { animal: 'kuchukcha', animalName: 'Kuchukcha', food: 'suyak', foodName: 'Suyak' },
+              { animal: 'maymun', animalName: 'Maymun', food: 'banan', foodName: 'Banan' },
+              { animal: 'sichqoncha', animalName: 'Sichqoncha', food: 'pishloq', foodName: 'Pishloq' }
+            ];
+            function nextRound() {
+              const target = pickRandom(pairs);
+              const others = shuffle(pairs.filter((p) => p.food !== target.food)).slice(0, 2);
+              const foodOpts = shuffle([target, ...others]);
+
+              const promptText = `${target.animalName} nima yeydi? Sevimli ovqatini bosing!`;
+              currentGamePromptFn = () => speakUzbek(promptText);
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl text-center space-y-6">
+                  <div class="bg-orange-100 border-[3px] border-slate-800 rounded-3xl p-5 inline-flex flex-col items-center">
+                    <div id="g5-animal" class="w-40">${SVG_ART[target.animal]()}</div>
+                    <span class="font-display text-2xl font-bold text-slate-900">${target.animalName} och qoldi!</span>
+                  </div>
+                  <div id="g5-foods" class="grid grid-cols-1 sm:grid-cols-3 gap-5"></div>
+                </div>
+              `;
+              const foodsGrid = document.getElementById('g5-foods');
+              foodOpts.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'kid-card bg-white rounded-3xl p-5 flex flex-col items-center cursor-pointer';
+                btn.innerHTML = `
+                  ${SVG_ART[opt.food]()}
+                  <span class="font-display text-2xl font-bold text-slate-900 mt-2">${opt.foodName}</span>
+                `;
+                btn.addEventListener('click', () => {
+                  if (opt.food === target.food) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    document.getElementById('g5-animal').classList.add('anim-bounce');
+                    speakUzbek(`Mazali! ${target.animalName} ${target.foodName}ni juda yaxshi ko'radi!`);
+                    setTimeout(nextRound, 1500);
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(`Yo'q, ${target.animalName} buni yemaydi!`);
+                  }
+                });
+                foodsGrid.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 6: Shakllar uyi ---- */
+          else if (gameId === 'shakllar-uyi') {
+            function setupHouse() {
+              let selectedShape = null;
+              const placed = { doira: false, uchburchak: false, tortburchak: false };
+
+              currentGamePromptFn = () => speakUzbek("Shakllarni bosib, uychadagi o'z joyiga qo'ying!");
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl flex flex-col items-center space-y-6">
+                  <p class="text-lg font-extrabold text-slate-700 text-center">
+                    Avval pastdagi shaklni bosing, so'ng uychadagi mos teshikka bosing!
+                  </p>
+                  <!-- Cartoon House -->
+                  <div class="relative bg-amber-100 border-[4px] border-slate-800 rounded-3xl p-6 w-full max-w-xl">
+                    <div class="bg-rose-400 border-[3px] border-slate-800 rounded-2xl py-2 px-4 text-center font-display text-2xl font-bold text-white mb-5">
+                      🏠 Shakllar Uyi
+                    </div>
+                    <div id="g6-slots" class="grid grid-cols-3 gap-4"></div>
+                  </div>
+                  <!-- Draggable / Clickable Pieces -->
+                  <div id="g6-pieces" class="grid grid-cols-3 gap-5 w-full max-w-xl"></div>
+                </div>
+              `;
+
+              const slotsBox = document.getElementById('g6-slots');
+              const piecesBox = document.getElementById('g6-pieces');
+
+              SHAPES.forEach((s) => {
+                const slot = document.createElement('button');
+                slot.type = 'button';
+                slot.dataset.slot = s.id;
+                slot.className = 'h-32 rounded-3xl border-[3px] border-dashed border-slate-700 bg-white/80 flex flex-col items-center justify-center p-2 cursor-pointer transition-transform';
+                slot.innerHTML = `
+                  <div class="opacity-25 scale-75 pointer-events-none">${SVG_ART[s.id]('#94A3B8')}</div>
+                  <span class="text-xs font-extrabold text-slate-600 mt-1">${s.name}</span>
+                `;
+                slot.addEventListener('click', () => {
+                  if (placed[s.id]) return;
+                  if (!selectedShape) {
+                    SFX.pop();
+                    speakUzbek(`Avval pastdan ${s.name} shaklini tanlang!`);
+                    return;
+                  }
+                  if (selectedShape === s.id) {
+                    placed[s.id] = true;
+                    SFX.success();
+                    slot.classList.remove('border-dashed', 'bg-white/80');
+                    slot.classList.add('bg-emerald-100', 'border-solid', 'anim-bounce');
+                    slot.innerHTML = `<div class="scale-90">${SVG_ART[s.id](s.color)}</div>`;
+
+                    const usedBtn = piecesBox.querySelector(`[data-piece="${s.id}"]`);
+                    if (usedBtn) {
+                      usedBtn.disabled = true;
+                      usedBtn.style.opacity = '0.25';
+                      usedBtn.classList.remove('ring-4', 'ring-amber-400');
+                    }
+                    selectedShape = null;
+
+                    if (Object.values(placed).every(Boolean)) {
+                      spawnConfetti();
+                      updateLocalScore(2);
+                      speakUzbek("Barakalla! Barcha shakllar o'z uyini topdi!");
+                      setTimeout(setupHouse, 2000);
+                    } else {
+                      speakUzbek(`Zo'r! ${s.name} joyiga tushdi!`);
+                    }
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(`Bu joy ${s.name} uchun! Boshqasini sinab ko'r!`);
+                  }
+                });
+                slotsBox.appendChild(slot);
+              });
+
+              shuffle(SHAPES).forEach((s) => {
+                const piece = document.createElement('button');
+                piece.type = 'button';
+                piece.dataset.piece = s.id;
+                piece.className = 'kid-card bg-white rounded-3xl p-4 flex flex-col items-center cursor-pointer';
+                piece.innerHTML = `<div class="scale-90">${SVG_ART[s.id](s.color)}</div><span class="font-display text-lg font-bold mt-1">${s.name}</span>`;
+                piece.addEventListener('click', () => {
+                  if (piece.disabled) return;
+                  SFX.pop();
+                  selectedShape = s.id;
+                  piecesBox.querySelectorAll('button').forEach((b) => b.classList.remove('ring-4', 'ring-amber-400', '-translate-y-1'));
+                  piece.classList.add('ring-4', 'ring-amber-400', '-translate-y-1');
+                  speakUzbek(`${s.name} tanlandi! Endi uychadagi joyini bosing!`);
+                });
+                piecesBox.appendChild(piece);
+              });
+            }
+            setupHouse();
+          }
+
+          /* ---- GAME 7: Harflarni aytamiz ---- */
+          else if (gameId === 'harf-top') {
+            function nextRound() {
+              const target = pickRandom(LETTERS);
+              const others = shuffle(LETTERS.filter((l) => l.char !== target.char)).slice(0, 3);
+              const opts = shuffle([target, ...others]);
+
+              const promptText = `${target.char} harfini toping! ${target.char}!`;
+              currentGamePromptFn = () => speakUzbek(promptText);
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-2xl text-center space-y-6">
+                  <button id="g7-replay" type="button" class="kid-btn bg-violet-200 px-8 py-4 rounded-3xl font-display text-3xl font-bold text-slate-900 cursor-pointer">
+                    🔊 "${target.char}" harfini toping!
+                  </button>
+                  <div id="g7-opts" class="grid grid-cols-2 sm:grid-cols-4 gap-5"></div>
+                </div>
+              `;
+              document.getElementById('g7-replay').addEventListener('click', () => currentGamePromptFn());
+
+              const grid = document.getElementById('g7-opts');
+              opts.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `kid-card ${opt.color} rounded-3xl py-10 font-display text-6xl font-bold text-slate-900 cursor-pointer`;
+                btn.textContent = opt.char;
+                btn.addEventListener('click', () => {
+                  if (opt.char === target.char) {
+                    SFX.success();
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    speakUzbek(`Ofarin! Bu ${target.char} harfi!`);
+                    setTimeout(nextRound, 1300);
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(`Bu ${opt.char}. Bizga ${target.char} harfi kerak!`);
+                  }
+                });
+                grid.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 8: Sehrli sharlar ---- */
+          else if (gameId === 'sehrli-sharlar') {
+            let poppedCount = 0;
+            const balloonColors = [
+              { name: 'Qizil', fill: '#EF4444' },
+              { name: "Ko'k", fill: '#3B82F6' },
+              { name: 'Sariq', fill: '#FACC15' },
+              { name: 'Yashil', fill: '#10B981' },
+              { name: 'Pushti', fill: '#EC4899' }
+            ];
+
+            currentGamePromptFn = () => speakUzbek('Uchayotgan rang-barang sharlarni bosib portlating!');
+            currentGamePromptFn();
+
+            els.gameStage.innerHTML = `
+              <div class="w-full space-y-4">
+                <div class="flex items-center justify-between px-2">
+                  <p class="font-display text-xl font-bold text-slate-800">Sharlarni bosing!</p>
+                  <p id="g8-popped" class="font-display text-xl font-bold text-rose-600">Portlatildi: 0</p>
+                </div>
+                <div id="g8-sky" class="relative w-full h-[380px] rounded-3xl border-[3px] border-slate-800 bg-gradient-to-b from-sky-200 via-sky-100 to-emerald-100 overflow-hidden"></div>
+              </div>
+            `;
+
+            const sky = document.getElementById('g8-sky');
+            const poppedLabel = document.getElementById('g8-popped');
+            let active = true;
+
+            function spawnBalloon() {
+              if (!active || state.activeGameId !== 'sehrli-sharlar') return;
+              const col = pickRandom(balloonColors);
+              const b = document.createElement('button');
+              b.type = 'button';
+              const leftPct = 8 + Math.random() * 78;
+              b.style.position = 'absolute';
+              b.style.left = leftPct + '%';
+              b.style.bottom = '-110px';
+              b.style.transition = `transform ${4.2 + Math.random() * 2}s linear`;
+              b.className = 'cursor-pointer focus:outline-none';
+              b.innerHTML = `
+                <svg viewBox="0 0 80 110" class="w-20 h-28 drop-shadow">
+                  <path d="M40 82 Q36 96 42 108" fill="none" stroke="#1E293B" stroke-width="3"/>
+                  <ellipse cx="40" cy="42" rx="30" ry="38" fill="${col.fill}" stroke="#1E293B" stroke-width="4"/>
+                  <ellipse cx="28" cy="28" rx="7" ry="12" transform="rotate(20 28 28)" fill="#FFFFFF" opacity="0.55"/>
+                </svg>
+              `;
+              sky.appendChild(b);
+
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                  b.style.transform = 'translateY(-540px)';
+                });
+              });
+
+              b.addEventListener('click', () => {
+                if (b.dataset.popped) return;
+                b.dataset.popped = '1';
+                SFX.balloonPop();
+                poppedCount++;
+                poppedLabel.textContent = `Portlatildi: ${poppedCount}`;
+                if (poppedCount % 5 === 0) {
+                  spawnConfetti();
+                  updateLocalScore(1);
+                  speakUzbek(`Zo'r! ${poppedCount} ta shar portladi!`);
+                } else {
+                  speakUzbek(`${col.name} shar! Paq!`);
+                }
+                b.remove();
+              });
+
+              setTimeout(() => {
+                if (b.parentNode) b.remove();
+              }, 6500);
+            }
+
+            spawnBalloon();
+            setTimeout(spawnBalloon, 500);
+            const intervalId = setInterval(spawnBalloon, 1050);
+
+            state.cleanupGame = () => {
+              active = false;
+              clearInterval(intervalId);
+            };
+          }
+
+          /* ---- GAME 9: Soyasini top ---- */
+          else if (gameId === 'soya-top') {
+            const pool = [
+              ...ANIMALS.map((a) => ({ id: a.id, name: a.name })),
+              ...FRUITS.map((f) => ({ id: f.id, name: f.name }))
+            ];
+            function nextRound() {
+              const target = pickRandom(pool);
+              const others = shuffle(pool.filter((p) => p.id !== target.id)).slice(0, 2);
+              const opts = shuffle([target, ...others]);
+
+              currentGamePromptFn = () => speakUzbek('Bu qaysi hayvon yoki mevaning soyasi? Toping!');
+              currentGamePromptFn();
+
+              els.gameStage.innerHTML = `
+                <div class="w-full max-w-3xl text-center space-y-6">
+                  <div class="bg-slate-100 border-[3px] border-slate-800 rounded-3xl p-6 inline-flex flex-col items-center">
+                    <div id="g9-shadow" class="w-40 shadow-silhouette transition-all duration-300">${SVG_ART[target.id]()}</div>
+                    <span class="font-display text-xl font-bold text-slate-700 mt-2">Bu kimning soyasi?</span>
+                  </div>
+                  <div id="g9-opts" class="grid grid-cols-1 sm:grid-cols-3 gap-5"></div>
+                </div>
+              `;
+              const grid = document.getElementById('g9-opts');
+              opts.forEach((opt) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'kid-card bg-white rounded-3xl p-5 flex flex-col items-center cursor-pointer';
+                btn.innerHTML = `${SVG_ART[opt.id]()}<span class="font-display text-2xl font-bold text-slate-900 mt-2">${opt.name}</span>`;
+                btn.addEventListener('click', () => {
+                  if (opt.id === target.id) {
+                    SFX.success();
+                    document.getElementById('g9-shadow').classList.remove('shadow-silhouette');
+                    spawnConfetti();
+                    updateLocalScore(1);
+                    speakUzbek(`Topdingiz! Bu ${target.name}!`);
+                    setTimeout(nextRound, 1500);
+                  } else {
+                    SFX.gentleOops();
+                    speakUzbek(`Yo'q, bu ${opt.name}. Soyaga diqqat bilan qara!`);
+                  }
+                });
+                grid.appendChild(btn);
+              });
+            }
+            nextRound();
+          }
+
+          /* ---- GAME 10: Quvnoq barmoqlar va qarsak ---- */
+          else if (gameId === 'quvnoq-qarsak') {
+            let claps = 0;
+            const praises = ['Barakalla!', 'Ofarin!', "Zo'r!", 'Aqlli bola!', 'Qarsak!'];
+
+            currentGamePromptFn = () => speakUzbek('Qani, barmoqchalar bilan tezroq qarsak chalamiz!');
+            currentGamePromptFn();
+
+            els.gameStage.innerHTML = `
+              <div class="w-full max-w-2xl text-center space-y-6">
+                <div class="w-full bg-slate-200 border-[3px] border-slate-800 rounded-full h-8 overflow-hidden p-1">
+                  <div id="g10-meter" class="h-full rounded-full bg-gradient-to-r from-amber-400 via-rose-400 to-emerald-400 transition-all duration-200" style="width: 0%"></div>
+                </div>
+                <p id="g10-label" class="font-display text-2xl font-bold text-slate-800">Qarsaklar: 0 / 10</p>
+                <button
+                  id="g10-clap-btn"
+                  type="button"
+                  class="kid-card bg-amber-200 rounded-[2.5rem] p-8 sm:p-10 w-full flex flex-col items-center justify-center relative overflow-hidden cursor-pointer"
+                >
+                  <div class="flex items-center justify-center gap-4 text-7xl sm:text-8xl">
+                    <span id="g10-hand-l" class="inline-block">🤚</span>
+                    <span id="g10-hand-r" class="inline-block -scale-x-100">🤚</span>
+                  </div>
+                  <span class="font-display text-3xl font-bold text-slate-900 mt-4">QARSAK CHAL! 👏</span>
+                </button>
+              </div>
+            `;
+
+            const clapBtn = document.getElementById('g10-clap-btn');
+            const meter = document.getElementById('g10-meter');
+            const label = document.getElementById('g10-label');
+            const handL = document.getElementById('g10-hand-l');
+            const handR = document.getElementById('g10-hand-r');
+
+            clapBtn.addEventListener('click', (e) => {
+              SFX.clap();
+              claps++;
+              const pct = Math.min(100, (claps % 10 === 0 ? 10 : claps % 10) * 10);
+              meter.style.width = pct + '%';
+              label.textContent = `Qarsaklar: ${claps % 10 === 0 ? 10 : claps % 10} / 10`;
+
+              handL.classList.remove('anim-clap-left');
+              handR.classList.remove('anim-clap-right');
+              void handL.offsetWidth;
+              handL.classList.add('anim-clap-left');
+              handR.classList.add('anim-clap-right');
+
+              // Floating star burst inside button
+              const floater = document.createElement('span');
+              floater.textContent = pickRandom(['⭐', '💖', '👏', '✨']);
+              floater.className = 'absolute text-4xl pointer-events-none anim-float-up';
+              floater.style.left = 20 + Math.random() * 60 + '%';
+              floater.style.top = '45%';
+              clapBtn.appendChild(floater);
+              setTimeout(() => floater.remove(), 900);
+
+              if (claps % 10 === 0) {
+                SFX.success();
+                spawnConfetti();
+                updateLocalScore(2);
+                speakUzbek("Uraaa! Juda zo'r qarsak chaldingiz! Barakalla!");
+              } else if (claps % 3 === 1) {
+                speakUzbek(pickRandom(praises));
+              }
+            });
+          }
+
+          /* ---- GAME 11: Kichkintoy poygasi (Car Racing) ---- */
+          else if (gameId === 'kichkintoy-poygasi') {
+            let carLane = 1; // 0 = left, 1 = center, 2 = right
+            let stars = [];
+            let lastSpawn = 0;
+            let running = true;
+
+            currentGamePromptFn = () =>
+              speakUzbek("Mashinani chapga va o'ngga burib yulduzchalarni yig'ing! Bip-bip!");
+            currentGamePromptFn();
+
+            els.gameStage.innerHTML = `
+              <div class="w-full max-w-xl flex flex-col items-center space-y-4">
+                <!-- Road Canvas -->
+                <div
+                  id="g11-road"
+                  class="relative w-full h-[350px] bg-slate-700 border-[4px] border-slate-900 rounded-3xl overflow-hidden grid grid-cols-3"
+                >
+                  <!-- Lane click targets -->
+                  <button type="button" data-lane="0" class="h-full border-r-4 border-dashed border-amber-300/70 cursor-pointer focus:outline-none" aria-label="Chap yo'lak"></button>
+                  <button type="button" data-lane="1" class="h-full border-r-4 border-dashed border-amber-300/70 cursor-pointer focus:outline-none" aria-label="O'rta yo'lak"></button>
+                  <button type="button" data-lane="2" class="h-full cursor-pointer focus:outline-none" aria-label="O'ng yo'lak"></button>
+
+                  <!-- Stars Layer -->
+                  <div id="g11-stars" class="pointer-events-none absolute inset-0"></div>
+
+                  <!-- Player Car -->
+                  <button
+                    id="g11-car"
+                    type="button"
+                    aria-label="Mashina signali"
+                    class="absolute bottom-4 w-20 h-24 transition-all duration-150 cursor-pointer z-10"
+                    style="left: calc(50% - 40px);"
+                  >
+                    ${SVG_ART.car()}
+                  </button>
+                </div>
+
+                <!-- Big Toddler Steering + Horn Controls -->
+                <div class="grid grid-cols-3 gap-3 w-full">
+                  <button id="g11-left" type="button" class="kid-btn bg-sky-200 rounded-2xl py-4 font-display text-2xl font-bold text-slate-900 cursor-pointer">
+                    ⬅️ Chapga
+                  </button>
+                  <button id="g11-horn" type="button" class="kid-btn bg-amber-300 rounded-2xl py-4 font-display text-2xl font-bold text-slate-900 cursor-pointer">
+                    📣 Bip-bip!
+                  </button>
+                  <button id="g11-right" type="button" class="kid-btn bg-sky-200 rounded-2xl py-4 font-display text-2xl font-bold text-slate-900 cursor-pointer">
+                    O'ngga ➡️
+                  </button>
+                </div>
+              </div>
+            `;
+
+            const road = document.getElementById('g11-road');
+            const starsLayer = document.getElementById('g11-stars');
+            const carEl = document.getElementById('g11-car');
+
+            function updateCarPosition() {
+              const centers = ['16.666%', '50%', '83.333%'];
+              carEl.style.left = `calc(${centers[carLane]} - 40px)`;
+            }
+
+            function moveLane(delta) {
+              carLane = Math.max(0, Math.min(2, carLane + delta));
+              updateCarPosition();
+              SFX.pop();
+            }
+
+            function triggerHorn() {
+              SFX.horn();
+              carEl.classList.remove('anim-bounce');
+              void carEl.offsetWidth;
+              carEl.classList.add('anim-bounce');
+              speakUzbek("Bip-bip! Yo'l bering!");
+            }
+
+            road.querySelectorAll('[data-lane]').forEach((laneBtn) => {
+              laneBtn.addEventListener('click', () => {
+                carLane = Number(laneBtn.dataset.lane);
+                updateCarPosition();
+                SFX.pop();
+              });
+            });
+            document.getElementById('g11-left').addEventListener('click', () => moveLane(-1));
+            document.getElementById('g11-right').addEventListener('click', () => moveLane(1));
+            document.getElementById('g11-horn').addEventListener('click', triggerHorn);
+            carEl.addEventListener('click', triggerHorn);
+
+            function onKeyDown(e) {
+              if (e.key === 'ArrowLeft') moveLane(-1);
+              else if (e.key === 'ArrowRight') moveLane(1);
+              else if (e.key === ' ') {
+                e.preventDefault();
+                triggerHorn();
+              }
+            }
+            window.addEventListener('keydown', onKeyDown);
+
+            function spawnRoadStar() {
+              const lane = Math.floor(Math.random() * 3);
+              const el = document.createElement('div');
+              const centers = ['16.666%', '50%', '83.333%'];
+              el.className = 'absolute text-4xl sm:text-5xl drop-shadow';
+              el.textContent = '⭐';
+              el.style.left = `calc(${centers[lane]} - 24px)`;
+              el.style.top = '-50px';
+              starsLayer.appendChild(el);
+              stars.push({ lane, y: -50, el, collected: false });
+            }
+
+            let prevTime = performance.now();
+            function loop(now) {
+              if (!running || state.activeGameId !== 'kichkintoy-poygasi') return;
+              const dt = Math.min(0.05, (now - prevTime) / 1000);
+              prevTime = now;
+
+              if (now - lastSpawn > 1350) {
+                spawnRoadStar();
+                lastSpawn = now;
+              }
+
+              for (let i = stars.length - 1; i >= 0; i--) {
+                const s = stars[i];
+                s.y += 135 * dt;
+                s.el.style.top = s.y + 'px';
+
+                // Check collision with car near bottom (y between 235 and 310)
+                if (!s.collected && s.lane === carLane && s.y >= 225 && s.y <= 315) {
+                  s.collected = true;
+                  SFX.star();
+                  updateLocalScore(1);
+                  s.el.textContent = '✨';
+                  s.el.classList.add('anim-float-up');
+                  if (localScore % 3 === 1) speakUzbek('Yulduzcha!');
+                  setTimeout(() => s.el.remove(), 400);
+                  stars.splice(i, 1);
+                  continue;
+                }
+
+                if (s.y > 360) {
+                  s.el.remove();
+                  stars.splice(i, 1);
+                }
+              }
+
+              state.raceRaf = requestAnimationFrame(loop);
+            }
+            state.raceRaf = requestAnimationFrame(loop);
+
+            state.cleanupGame = () => {
+              running = false;
+              window.removeEventListener('keydown', onKeyDown);
+              if (state.raceRaf) cancelAnimationFrame(state.raceRaf);
+              state.raceRaf = null;
+            };
+          }
+        }
+
+        /* =========================================================
+           6. NAVIGATION & TOP BAR HANDLERS
+           ========================================================= */
+        function switchSection(sectionId) {
+          if (state.activeGameId) exitActiveGame();
+          state.activeSection = sectionId;
+
+          Object.entries(els.sections).forEach(([id, el]) => {
+            if (id === sectionId) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+          });
+
+          els.navTabs.forEach((tab) => {
+            const isActive = tab.dataset.nav === sectionId;
+            tab.classList.toggle('bg-amber-300', isActive);
+            tab.classList.toggle('bg-white', !isActive);
+          });
+
+          const intros = {
+            logopediya: "Logopediya bo'limi! Til va lab gimnastikasini bajaramiz!",
+            galereya: "Hayvonlar va mevalar! Qaysi birini ko'rishni xohlaysiz?",
+            ranglar: "Ranglar va shakllar! Yoqtirgan rangingizni bosing!",
+            oyinlar: "O'yinlar maydonchasi! 11 ta qiziqarli o'yindan birini tanlang!"
+          };
+          SFX.pop();
+          speakUzbek(intros[sectionId]);
+        }
+
+        els.navTabs.forEach((tab) => {
+          tab.addEventListener('click', () => switchSection(tab.dataset.nav));
+        });
+
+        els.brandHomeBtn.addEventListener('click', () => switchSection('logopediya'));
+
+        els.voiceToggleBtn.addEventListener('click', () => {
+          state.voiceEnabled = !state.voiceEnabled;
+          els.voiceToggleBtn.setAttribute('aria-pressed', String(state.voiceEnabled));
+          if (state.voiceEnabled) {
+            els.voiceToggleBtn.textContent = '🔊 Ovoz: Yoqilgan';
+            els.voiceToggleBtn.classList.remove('bg-slate-200');
+            els.voiceToggleBtn.classList.add('bg-sky-200');
+            SFX.pop();
+            speakUzbek('Ovoz yoqildi!');
+          } else {
+            els.voiceToggleBtn.textContent = "🔇 Ovoz: O'chiq";
+            els.voiceToggleBtn.classList.remove('bg-sky-200');
+            els.voiceToggleBtn.classList.add('bg-slate-200');
+            stopAllSpeech();
+          }
+        });
+
+        els.repeatSpeechBtn.addEventListener('click', () => {
+          SFX.pop();
+          speakUzbek(state.lastSpoken);
+        });
+
+        /* =========================================================
+           7. INITIALIZE APPLICATION
+           ========================================================= */
+        renderExercises();
+        renderLetters();
+        renderGallery();
+        renderColorsAndShapes();
+        renderGamesHub();
+      })();
+    </script>
+  </body>
+</html>

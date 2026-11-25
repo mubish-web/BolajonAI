@@ -1,0 +1,6 @@
+{
+  "name": "Bolajon — Logopediya va Aqlli O'yinlar",
+  "description": "3 yoshli bolalar uchun o'zbek tilida ovozli logopedik mashqlar, ta'limiy bo'limlar va 11 ta rivojlantiruvchi mini-o'yin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
